@@ -1,0 +1,37 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.2.10",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "firebase-admin": "^9.5.0",
+    "formik": "^2.2.6",
+    "jsonwebtoken": "^8.5.1",
+    "material-ui-chip-input": "^2.0.0-beta.2",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "react-datepicker": "^3.6.0",
+    "yup": "^0.32.9"
+  }
+}
