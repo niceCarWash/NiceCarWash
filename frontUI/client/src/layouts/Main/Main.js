@@ -21,27 +21,19 @@ const Main = ({ children, themeToggler, themeMode }) => {
 
   const pages = {
     products: {
-      title: 'Products',
-      id: 'products',
+      title: 'Services',
+      id: 'services',
       children: {
         productsRoutes: {
-          groupTitle: 'Our Products',
+          groupTitle: 'Our Services',
           pages: [
             {
-              title: 'Product Categories',
-              href: '/products/categories',
+              title: 'Our Plans',
+              href: '/plans',
             },
             {
-              title: 'Product List',
-              href: '/products/all',
-            },
-            {
-              title: 'Top Rated Products',
-              href: '/procuts/top',
-            },
-            {
-              title: 'New Products',
-              href: '/products/new',
+              title: 'Our Services',
+              href: '/Services',
             },
           ],
         },
@@ -56,20 +48,12 @@ const Main = ({ children, themeToggler, themeMode }) => {
           groupTitle: 'About Us',
           pages: [
             {
-              title: 'Our History',
-              href: '/about/history',
+              title: 'Who We Are',
+              href: '/about/',
             },
             {
-              title: 'Our Services and Products ',
-              href: '/about/services',
-            },
-            {
-              title: 'Our Vision',
-              href: '/about/vision',
-            },
-            {
-              title: 'Our Contact',
-              href: '/about/contact',
+              title: 'Contact Us ',
+              href: '/contact',
             },
           ],
         },
@@ -112,6 +96,15 @@ const Main = ({ children, themeToggler, themeMode }) => {
             {
               title: 'Log Out',
               href: '/',
+            },
+          ],
+        },
+        admin: {
+          groupTitle: 'Admin Routes',
+          pages: [
+            {
+              title: 'Admin',
+              href: '/admin',
             },
           ],
         },

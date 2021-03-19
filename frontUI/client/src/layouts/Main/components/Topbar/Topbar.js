@@ -141,7 +141,7 @@ const Topbar = ({
   };
 
   const AccountPages = () => {
-    const { settings, signup, signin, logout } = account.children;
+    const { settings, signup, signin, logout, admin } = account.children;
     return (
       <div className={classes.menu}>
         <div className={classes.menuItem}>
@@ -149,6 +149,7 @@ const Topbar = ({
             <div>
               <MenuGroup item={signup} />
               <MenuGroup item={signin} />
+              <MenuGroup item={admin} />
             </div>
           )}
           {user && <ButtonLogOut item={logout} />}
@@ -161,7 +162,7 @@ const Topbar = ({
   };
 
   const renderPages = id => {
-    if (id === 'products') {
+    if (id === 'services') {
       return <ProductPages />;
     }
     if (id === 'aboutUs') {

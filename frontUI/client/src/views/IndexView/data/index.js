@@ -1,206 +1,54 @@
-export const categories = [
+export const partners = [
   {
-    title: 'Headphones',
-    icon: {
-      src: 'https://assets.maccarianagency.com/the-front/illustrations/icon-headphone.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/illustrations/icon-headphone@2x.png 2x',
-    },
+    name: 'Airbnb',
+    logo: 'https://assets.maccarianagency.com/the-front/logos/airbnb.svg',
   },
   {
-    title: 'Beats',
-    icon: {
-      src: 'https://assets.maccarianagency.com/the-front/illustrations/icon-music.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/illustrations/icon-music@2x.png 2x',
-    },
+    name: 'Coinbase',
+    logo: 'https://assets.maccarianagency.com/the-front/logos/coinbase.svg',
   },
   {
-    title: 'Notebooks',
-    icon: {
-      src: 'https://assets.maccarianagency.com/the-front/illustrations/icon-laptop.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/illustrations/icon-laptop@2x.png 2x',
-    },
+    name: 'Dribbble',
+    logo: 'https://assets.maccarianagency.com/the-front/logos/dribbble.svg',
   },
   {
-    title: 'Cameras',
-    icon: {
-      src: 'https://assets.maccarianagency.com/the-front/illustrations/icon-camera.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/illustrations/icon-camera@2x.png 2x',
-    },
+    name: 'Instagram',
+    logo: 'https://assets.maccarianagency.com/the-front/logos/instagram.svg',
   },
   {
-    title: 'Gaming',
-    icon: {
-      src: 'https://assets.maccarianagency.com/the-front/illustrations/icon-game.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/illustrations/icon-game@2x.png 2x',
-    },
+    name: 'Netflix',
+    logo: 'https://assets.maccarianagency.com/the-front/logos/netflix.svg',
   },
   {
-    title: 'Video',
-    icon: {
-      src: 'https://assets.maccarianagency.com/the-front/illustrations/icon-camera.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/illustrations/icon-camera@2x.png 2x',
-    },
+    name: 'Pinterest',
+    logo: 'https://assets.maccarianagency.com/the-front/logos/pinterest.svg',
   },
 ];
 
-export const featuredProducts = [
+export const advantages = [
   {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product1.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product1@2x.png 2x',
-    },
-    price: '$320',
-    title: 'Music player',
-    rating: 5,
+    title: 'Build Recurring Revenue',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    icon: 'fas fa-money-bill-wave',
   },
   {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product2.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product2@2x.png 2x',
-    },
-    price: '$120',
-    title: 'Headphones',
-    rating: 4,
+    title: 'Competitive Differentation',
+    description:
+      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    icon: 'fas fa-trophy',
   },
   {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product3.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product3@2x.png 2x',
-    },
-    price: '$290',
-    title: 'Wireless headpohones',
-    rating: 5,
+    title: 'Keep Your Clients Loyal',
+    description:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    icon: 'fas fa-heart',
   },
   {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product4.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product4@2x.png 2x',
-    },
-    price: '$140',
-    title: 'Bluetooth headphones',
-    rating: 3,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product5.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product5@2x.png 2x',
-    },
-    price: '$170',
-    title: 'Headphones',
-    rating: 5,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product6.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product6@2x.png 2x',
-    },
-    price: '$300',
-    title: 'Music player',
-    rating: 4,
-  },
-];
-
-export const mostSoldProducts = [
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product7.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product7@2x.png 2x',
-    },
-    title: 'Laptops and computers',
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product8.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product8@2x.png 2x',
-    },
-    title: 'Phones and tablets',
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product9.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product9@2x.png 2x',
-    },
-    title: 'Headphones and airpods',
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product8.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product8@2x.png 2x',
-    },
-    title: 'iWatch and smartwatch',
-  },
-];
-
-export const news = [
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/rental/los-angeles.jpg',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/rental/los-angeles@2x.jpg 2x',
-    },
-    title: 'The products you need',
-    subtitle:
-      "The Nike Zoom SB Stefan Janoski SE Men's Skateboarding Shoe is made with smooth suede and Nubuck…",
-    cols: 2,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/rental/san-francisco.jpg',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/rental/san-francisco@2x.jpg 2x',
-    },
-    title: 'The most viewed products of the month',
-    subtitle:
-      "The Nike Zoom SB Stefan Janoski SE Men's Skateboarding Shoe is made with smooth suede and Nubuck…",
-    cols: 1,
-    rows: 2,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/rental/seattle.jpg',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/rental/seattle@2x.jpg 2x',
-    },
-    title: 'Why you need to have these products?',
-    subtitle:
-      "The Nike Zoom SB Stefan Janoski SE Men's Skateboarding Shoe is made with smooth suede and Nubuck…",
-    cols: 3,
-  },
-];
-
-export const latestProducts = [
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product2.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product2@2x.png 2x',
-    },
-    price: '$120',
-    title: 'Headphones',
-    rating: 4,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product3.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product3@2x.png 2x',
-    },
-    price: '$290',
-    title: 'Wireless headpohones',
-    rating: 5,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product4.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product4@2x.png 2x',
-    },
-    price: '$140',
-    title: 'Bluetooth headphones',
-    rating: 3,
-  },
-  {
-    image: {
-      src: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product5.png',
-      srcSet: 'https://assets.maccarianagency.com/the-front/photos/ecommerce/product5@2x.png 2x',
-    },
-    price: '$170',
-    title: 'Headphones',
-    rating: 5,
+    title: 'Automated Sales Process',
+    description:
+      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    icon: 'fas fa-cog',
   },
 ];
 
@@ -224,5 +72,108 @@ export const reviews = [
     authorOccupation: 'Lead Generation, Alternative Capital',
     feedback:
       'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  },
+  {
+    authorPhoto: {
+      src: 'https://assets.maccarianagency.com/the-front/photos/people/jack-smith.jpg',
+      srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/jack-smith@2x.jpg 2x',
+    },
+    authorName: 'Jack Smith',
+    authorOccupation: 'Head of Operations, Parkfield Commerce',
+    feedback:
+      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  },
+];
+
+export const integrations = [
+  {
+    logo: 'https://assets.maccarianagency.com/the-front/logos/slack.svg',
+    name: 'Slack',
+    title:
+      "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
+  },
+  {
+    logo: 'https://assets.maccarianagency.com/the-front/logos/mailchimp.svg',
+    name: 'Mailchimp',
+    title:
+      'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
+  },
+  {
+    logo: 'https://assets.maccarianagency.com/the-front/logos/dropbox.svg',
+    name: 'Dropbox',
+    title:
+      'Sync any file store to Dropbox for automated sharing with people outside the company.',
+  },
+  {
+    logo: 'https://assets.maccarianagency.com/the-front/logos/google-drive.svg',
+    name: 'Google Drive',
+    title:
+      'Sync any file store to Google Drive for automated sharing with people outside the company.',
+  },
+  {
+    logo: 'https://assets.maccarianagency.com/the-front/logos/google-ad-manager.svg',
+    name: 'Google Ad Manager',
+    title:
+      'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
+  },
+  {
+    logo: 'https://assets.maccarianagency.com/the-front/logos/atlassian.svg',
+    name: 'Atlassian',
+    title:
+      'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
+  },
+];
+
+export const customizations = [
+  {
+    title: '3rd-Party Integrations',
+    icon: 'fas fa-plug',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
+  {
+    title: 'Meets Privacy Requirements',
+    description:
+      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    icon: 'fas fa-lock',
+  },
+  {
+    title: 'Marketing & Sales Collateral',
+    description:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    icon: 'fas fa-hand-holding-heart',
+  },
+  {
+    title: 'Integrates With Most Hardware',
+    description:
+      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    icon: 'fas fa-plus',
+  },
+];
+
+export const team = [
+  {
+    title: 'UI/UX Designer',
+    authorPhoto: {
+      src: 'https://assets.maccarianagency.com/the-front/photos/people/kate-segelson.jpg',
+      srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/kate-segelson@2x.jpg 2x',
+    },
+    authorName: 'Kate Segelson',
+  },
+  {
+    title: 'Web Backend Developer',
+    authorPhoto: {
+      src: 'https://assets.maccarianagency.com/the-front/photos/people/alex-johnson.jpg',
+      srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/alex-johnson@2x.jpg 2x',
+    },
+    authorName: 'Alex Johnson',
+  },
+  {
+    title: 'Web Frontend Developer',
+    authorPhoto: {
+      src: 'https://assets.maccarianagency.com/the-front/photos/people/valeria-kogan.jpg',
+      srcSet: 'https://assets.maccarianagency.com/the-front/photos/people/valeria-kogan@2x.jpg 2x',
+    },
+    authorName: 'Valeria Kogan',
   },
 ];

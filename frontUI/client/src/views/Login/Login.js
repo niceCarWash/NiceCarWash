@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { Link, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import {
@@ -11,7 +12,7 @@ import { useStyles } from './Style';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import Validations from './Validations';
-import { createOrUpdateUser } from '../../redux/actions/auth_actions/LoginUserAction';
+import { currentUser } from '../../redux/actions/auth_actions/AuthAction';
 // Materil UI imports
 import { Button, TextField, Grid, Box } from '@material-ui/core/';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
@@ -41,8 +42,7 @@ const Login = () => {
       );
       const { user } = result;
       const authtoken = await user.getIdTokenResult();
-
-      createOrUpdateUser(authtoken)
+      currentUser(authtoken)
         .then(res => {
           dispatch({
             type: 'AUTH_SUCCESS',
@@ -55,11 +55,13 @@ const Login = () => {
               _id: res.data._id,
             },
           });
+
           roleBasedRedirect(res);
           dispatch({ type: 'AUTH_END', loading: false });
+          toast.success(`Welcome back ${res.data.name}`);
         })
         .catch(err => {
-          dispatch({ type: 'AUTH_FAIL', loading: false, payload: err.message });
+          dispatch({ type: 'AUTH_FAIL', loading: false, payload: null });
           setUserLoading(false);
           console.log(err);
         });
@@ -76,7 +78,7 @@ const Login = () => {
       .then(async result => {
         const { user } = result;
         const idTokenResult = await user.getIdTokenResult();
-        createOrUpdateUser(idTokenResult)
+        currentUser(idTokenResult)
           .then(res => {
             dispatch({
               type: 'LOGGED_IN_USER',
@@ -105,7 +107,7 @@ const Login = () => {
       .then(async result => {
         var credential = result.credential;
         const idTokenResult = credential.accessToken.token;
-        createOrUpdateUser(idTokenResult)
+        currentUser(idTokenResult)
           .then(res => {
             dispatch({
               type: 'LOGGED_IN_USER',
@@ -156,72 +158,76 @@ const Login = () => {
           />
           <Section className={classes.pagePaddingTop}>
             <form className={classes.form} onSubmit={formik.handleSubmit}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                disabled={userLoading}
-              >
-                Sign In
-              </Button>
-              <Box m={3}>
+              <Grid container spacing={2}>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
+                />
                 <Button
-                  variant="contained"
-                  color="secondary"
-                  className={classes.button}
-                  endIcon={<LockOpenIcon />}
-                  onClick={googleLogin}
-                >
-                  Continue With Google
-                </Button>
-                <Button
+                  type="submit"
+                  fullWidth
                   variant="contained"
                   color="primary"
                   className={classes.submit}
-                  endIcon={<FacebookIcon />}
-                  onClick={facebookLogin}
+                  disabled={userLoading}
                 >
-                  Continue with Facebook
+                  Sign In
                 </Button>
-              </Box>
-              <Grid container>
-                <Grid item xs>
-                  <Link to="/password_reset">Forgot password?</Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/register">{"Don't have an account? Sign Up"}</Link>
+                <Box m={3}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                    endIcon={<LockOpenIcon />}
+                    onClick={googleLogin}
+                  >
+                    Continue With Google
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    endIcon={<FacebookIcon />}
+                    onClick={facebookLogin}
+                  >
+                    Continue with Facebook
+                  </Button>
+                </Box>
+                <Grid container>
+                  <Grid item xs>
+                    <Link to="/password_reset">Forgot password?</Link>
+                  </Grid>
+                  <Grid item>
+                    <Link to="/register">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
                 </Grid>
               </Grid>
             </form>

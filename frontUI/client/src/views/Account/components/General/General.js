@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { authFirbase } from '../../../../Firebase';
+import { deleteUser } from '../../../../redux/actions/auth_actions/AuthAction';
 import { useFormik } from 'formik';
 import Validations from './Validations';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -21,6 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const General = props => {
+  let dispatch = useDispatch();
   const { className, ...rest } = props;
   const classes = useStyles();
 
@@ -35,13 +38,30 @@ const General = props => {
     defaultMatches: true,
   });
 
+  const handleUserDelete = async () => {
+    const _id = auth._id;
+    try {
+      const user = await authFirbase.currentUser;
+      await user.delete();
+      deleteUser(_id).then(res => {
+        dispatch({
+          type: 'CLEAN_UP',
+          payload: null,
+          loading: false,
+        });
+        console.log(res);
+      });
+      localStorage.removeItem('persist:root');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       email: window.localStorage.getItem('emailForRegistration'),
-      fullName: '',
-      lastName: 'Abdullah',
-      password: '12345678',
-      verifyPassword: '12345678',
+      fullName: user.name,
+      email: user.email,
     },
     validationSchema: Validations,
     onSubmit: async values => {
@@ -54,10 +74,19 @@ const General = props => {
     <div className={className} {...rest}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={isMd ? 4 : 2}>
-          <Grid item xs={12}>
+          <Grid item lg={6}>
             <Typography variant="h6" color="textPrimary">
               Basic Information
             </Typography>
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleUserDelete}
+            >
+              Delete
+            </Button>
           </Grid>
 
           <Grid item xs={12}>
@@ -99,25 +128,13 @@ const General = props => {
               name="email"
               fullWidth
               type="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
             />
           </Grid>
-          <Grid item xs={12}>
-            <Typography
-              variant="subtitle1"
-              color="textPrimary"
-              className={classes.inputTitle}
-            >
-              Bio
-            </Typography>
-            <TextField
-              placeholder="Your bio"
-              variant="outlined"
-              name="bio"
-              fullWidth
-              multiline
-              rows={4}
-            />
-          </Grid>
+
           <Grid item xs={12}>
             <Divider />
           </Grid>

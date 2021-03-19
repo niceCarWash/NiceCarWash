@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
 const userSchema = new mongoose.Schema(
@@ -11,16 +11,22 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: "subscriber",
+      default: 'subscriber',
     },
     cart: {
       type: Array,
       default: [],
     },
-    address: String,
+    info: [
+      { country: String },
+      { city: String },
+      { phone: String },
+      { birthdate: Date },
+      { gender: { type: String, enum: ['Male', 'Female'] } },
+    ],
     //   wishlist: [{ type: ObjectId, ref: "Product" }],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

@@ -1,40 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import {
-  useMediaQuery,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-  Typography,
-} from '@material-ui/core';
-import { SectionHeader } from 'components/molecules';
+import { useMediaQuery } from '@material-ui/core';
+import { Grid, Button, Typography, colors } from '@material-ui/core';
+import { Image } from 'components/atoms';
+import { SectionHeader, IconAlternate } from 'components/molecules';
+import { CardReview } from 'components/organisms';
 
-const useStyles = makeStyles(theme => ({
-  textWhite: {
-    color: 'white',
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: theme.spacing(1),
-  },
-  listItemAvatar: {
-    marginRight: theme.spacing(3),
-  },
-  gridCard: {
-    padding: theme.spacing(2),
-    background: theme.palette.alternate.main,
-    borderRadius: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(4),
-    },
-  },
-  gridItem: {
-    height: '100%',
+const useStyles = makeStyles(() => ({
+  sectionHeadlineStars: {
+    maxWidth: 120,
   },
 }));
 
@@ -48,72 +23,62 @@ const Reviews = props => {
   });
 
   return (
-    <div className={className} {...rest}>
+    <div className={className} data-aos="fade-up" {...rest}>
       <SectionHeader
+        overline={
+          <Image
+            src="https://assets.maccarianagency.com/the-front/illustrations/rated-by-our-customer.png"
+            alt="rating"
+            className={classes.sectionHeadlineStars}
+            width="auto"
+          />
+        }
         title={
-          <span className={classes.textWhite}>
-            Trusted by the world’s most innovative businesses – big and small
+          <span>
+            <Typography color="secondary" variant="inherit" component="span">Rated 5 out of 5</Typography> stars by
+            our customers!
           </span>
         }
-        subtitle={
-          <span className={classes.textWhite}>
-            After 3 days all of your offers will arrive and you will have
-            another 7 days to select your new company.
-          </span>
-        }
-        subtitleColor="textPrimary"
-        data-aos="fade-up"
+        subtitle="Companies from across the globe have had fantastic experiences using TheFront. Here’s what they have to say."
+        fadeUp
       />
-      <Grid container spacing={4}>
-        {data.map((item, index) => (
-          <Grid item xs={12} md={6} key={index} className={classes.gridItem}>
-            <Grid
-              container
-              className={classes.gridCard}
-              data-aos="fade-up"
-              spacing={2}
-            >
-              <Grid
-                item
-                container
-                justify={isMd ? 'flex-start' : 'center'}
-                alignItems="center"
-                xs={12}
-              >
-                <List disablePadding>
-                  <ListItem disableGutters>
-                    <ListItemAvatar className={classes.listItemAvatar}>
-                      <Avatar
-                        {...item.authorPhoto}
-                        alt={item.authorName}
-                        className={classes.avatar}
-                      />
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={item.authorName}
-                      secondary={item.authorOccupation}
-                    />
-                  </ListItem>
-                </List>
-              </Grid>
-              <Grid
-                item
-                container
-                justify="space-between"
-                alignItems={isMd ? 'flex-start' : 'center'}
-                xs={12}
-              >
-                <Typography
-                  variant="body1"
-                  color="textPrimary"
-                  align={isMd ? 'left' : 'center'}
-                >
-                  "{item.feedback}"
-                </Typography>
-              </Grid>
-            </Grid>
+      <Grid container spacing={isMd ? 4 : 2}>
+        {data.map((review, index) => (
+          <Grid
+            key={index}
+            item
+            container
+            alignItems="center"
+            direction="column"
+            xs={12}
+            sm={12}
+            md={4}
+            data-aos="fade-up"
+          >
+            <CardReview
+              variant="outlined"
+              text={review.feedback}
+              icon={
+                <IconAlternate
+                  color={colors.blue}
+                  fontIconClass="fas fa-quote-right"
+                />
+              }
+              authorName={review.authorName}
+              authorTitle={review.authorOccupation}
+              authorPhoto={review.authorPhoto}
+            />
           </Grid>
         ))}
+        <Grid item container xs={12} justify="center">
+          <Button
+            variant="outlined"
+            size={isMd ? 'large' : 'medium'}
+            color="secondary"
+          >
+            See all reviews
+          </Button>
+        </Grid>
       </Grid>
     </div>
   );
@@ -125,7 +90,7 @@ Reviews.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Data to be rendered
+   * data to be rendered
    */
   data: PropTypes.array.isRequired,
 };

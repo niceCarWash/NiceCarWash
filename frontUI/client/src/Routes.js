@@ -17,6 +17,9 @@ import {
   Login as LoginView,
   Account as AccountView,
   PasswordRest as PasswordRestView,
+  Prices as pricesView,
+  About as aboutView,
+  Contact as contactView,
 } from './views';
 
 const Routes = () => {
@@ -44,7 +47,7 @@ const Routes = () => {
           />
         )}
       />
-      <Route
+      <UserRoutes
         exact
         path="/account"
         render={matchProps => (
@@ -68,12 +71,23 @@ const Routes = () => {
       />
       <Route
         exact
-        path="/register/complete"
+        path="/login"
         render={matchProps => (
           <WithLayout
             {...matchProps}
-            component={ResgisterCompleteView}
-            layout={MinimalLayout}
+            component={LoginView}
+            layout={MainLayout}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/plans"
+        render={matchProps => (
+          <WithLayout
+            {...matchProps}
+            component={pricesView}
+            layout={MainLayout}
           />
         )}
       />
@@ -96,6 +110,28 @@ const Routes = () => {
             {...matchProps}
             component={NotFoundView}
             layout={MinimalLayout}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/about"
+        render={matchProps => (
+          <WithLayout
+            {...matchProps}
+            component={aboutView}
+            layout={MainLayout}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/contact"
+        render={matchProps => (
+          <WithLayout
+            {...matchProps}
+            component={contactView}
+            layout={MainLayout}
           />
         )}
       />
