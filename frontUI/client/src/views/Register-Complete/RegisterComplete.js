@@ -5,7 +5,7 @@ import { authFirbase } from '../../Firebase';
 import { useStyles } from './Style';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
-import { createUser } from '../../redux/actions/auth_actions/AuthAction';
+import { createOrUpdateUser } from '../../redux/actions/auth_actions/AuthAction';
 import Validations from './Validations';
 // Materil UI imports
 import { Button, TextField, Grid, Typography } from '@material-ui/core/';
@@ -41,7 +41,7 @@ const RegisterComplete = () => {
         let user = authFirbase.currentUser;
         await user.updatePassword(password);
         const authtoken = await user.getIdTokenResult();
-        createUser(authtoken)
+        createOrUpdateUser(authtoken)
           .then(res => {
             dispatch({
               type: 'AUTH_SUCCESS',

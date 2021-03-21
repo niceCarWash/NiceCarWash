@@ -43,7 +43,7 @@ const Topbar = ({
 
   // Load Auth From Redux Store
   const { auth } = useSelector(state => ({ ...state }));
-  let user = !!auth;
+  let user = auth;
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openedPopoverId, setOpenedPopoverId] = useState(null);
@@ -145,14 +145,15 @@ const Topbar = ({
     return (
       <div className={classes.menu}>
         <div className={classes.menuItem}>
-          {!user && (
+          {user === null && (
             <div>
               <MenuGroup item={signup} />
               <MenuGroup item={signin} />
-              <MenuGroup item={admin} />
             </div>
           )}
-          {user && <ButtonLogOut item={logout} />}
+          {user != null && <ButtonLogOut item={logout} />}
+          {}
+          {user != null && user.role === 'admin' && <MenuGroup item={admin} />}
         </div>
         <div className={classes.menuItem}>
           {user && <MenuGroup item={settings} />}

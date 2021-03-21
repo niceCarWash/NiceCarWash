@@ -1,5 +1,5 @@
 var admin = require('firebase-admin');
-
+const User = require('../models/user');
 var serviceAccount = require('../config/fbServiceAccountKey.json');
 
 admin.initializeApp({
@@ -16,23 +16,20 @@ exports.authCheck = async (req, res, next) => {
     next();
   } catch (err) {
     console.log(err);
-    // res.status(401).json(err);
+    res.status(401).json(err);
   }
 };
 
-// exports.authCheck = (req, res, next) => {
-//   const idToken = req.headers.authtokenResult;
-//   defaultAuth
-//     .verifyIdToken(idToken)
-//     .then((user) => {
-//       req.user = user;
-//       next();
-//     })
-//     .catch((err) => {
-//       console.log(idToken);
-//       console.log(err);
-//       res.status(401).json({
-//         err: 'Invalid or expired token',
-//       });
-//     });
-// };
+exports.adminCheck = async (req, res, next) => {
+  const { email } = req.user;
+
+  const adminUser = await User.findOne({ email }).exec();
+
+  if (adminUser.role !== 'admin') {
+    res.status(403).json({
+      err: 'Admin resource. Access denied.',
+    });
+  } else {
+    next();
+  }
+};

@@ -12,7 +12,10 @@ import { useStyles } from './Style';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import Validations from './Validations';
-import { currentUser } from '../../redux/actions/auth_actions/AuthAction';
+import {
+  createOrUpdateUser,
+  currentUser,
+} from '../../redux/actions/auth_actions/AuthAction';
 // Materil UI imports
 import { Button, TextField, Grid, Box } from '@material-ui/core/';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
@@ -24,7 +27,7 @@ const Login = () => {
   let history = useHistory();
   const roleBasedRedirect = res => {
     if (res.data.role === 'admin') {
-      history.push('/admin/dashboard');
+      history.push('/admin');
     } else {
       history.push('/account');
     }
@@ -42,7 +45,7 @@ const Login = () => {
       );
       const { user } = result;
       const authtoken = await user.getIdTokenResult();
-      currentUser(authtoken)
+      createOrUpdateUser(authtoken)
         .then(res => {
           dispatch({
             type: 'AUTH_SUCCESS',
@@ -78,7 +81,7 @@ const Login = () => {
       .then(async result => {
         const { user } = result;
         const idTokenResult = await user.getIdTokenResult();
-        currentUser(idTokenResult)
+        createOrUpdateUser(idTokenResult)
           .then(res => {
             dispatch({
               type: 'LOGGED_IN_USER',
@@ -107,7 +110,7 @@ const Login = () => {
       .then(async result => {
         var credential = result.credential;
         const idTokenResult = credential.accessToken.token;
-        currentUser(idTokenResult)
+        createOrUpdateUser(idTokenResult)
           .then(res => {
             dispatch({
               type: 'LOGGED_IN_USER',

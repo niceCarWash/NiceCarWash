@@ -6,6 +6,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import UserRoutes from './Routes/UserRoutes';
+import AdminRoutes from './Routes/AdminRoutes';
+import PublicRoutes from './Routes/PublicRoutes';
 import WithLayout from 'WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 
@@ -20,6 +22,8 @@ import {
   Prices as pricesView,
   About as aboutView,
   Contact as contactView,
+  Admin as adminView,
+  AdminDashboard,
 } from './views';
 
 const Routes = () => {
@@ -36,7 +40,7 @@ const Routes = () => {
           />
         )}
       />
-      <Route
+      <PublicRoutes
         exact
         path="/register"
         render={matchProps => (
@@ -58,7 +62,7 @@ const Routes = () => {
           />
         )}
       />
-      <Route
+      <PublicRoutes
         exact
         path="/login"
         render={matchProps => (
@@ -69,14 +73,14 @@ const Routes = () => {
           />
         )}
       />
-      <Route
+      <AdminRoutes
         exact
-        path="/login"
+        path="/admin"
         render={matchProps => (
           <WithLayout
             {...matchProps}
-            component={LoginView}
-            layout={MainLayout}
+            component={AdminDashboard}
+            layout={MinimalLayout}
           />
         )}
       />
@@ -91,7 +95,7 @@ const Routes = () => {
           />
         )}
       />
-      <UserRoutes
+      <Route
         exact
         path="/password_reset"
         render={matchProps => (

@@ -1,6 +1,6 @@
 import axios from 'axios';
 // New user Registration or Update
-const createUser = async authtoken => {
+const createOrUpdateUser = async authtoken => {
   const headers = {
     'Content-Type': 'application/json',
     Authorization: authtoken.token,
@@ -28,22 +28,8 @@ const currentUser = async authtoken => {
   );
 };
 
-const updateUser = async (updateInfo, authtoken) => {
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: authtoken.token,
-  };
-  return await axios.post(
-    `${process.env.REACT_APP_API}/update-user`,
-    updateInfo,
-    {
-      headers: headers,
-    },
-  );
-};
-
 const deleteUser = async _id => {
   return await axios.delete(`${process.env.REACT_APP_API}/delete-user/${_id}`);
 };
 
-export { createUser, updateUser, currentUser, deleteUser };
+export { createOrUpdateUser, currentUser, deleteUser };
