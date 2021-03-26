@@ -1,22 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
-import { Grid, Typography, colors } from '@material-ui/core';
-import { LearnMoreLink } from 'components/atoms';
-import { SectionHeader, IconAlternate } from 'components/molecules';
-import { CardBase, DescriptionListIcon } from 'components/organisms';
-
-const useStyles = makeStyles(theme => ({
-  learnMoreLink: {
-    marginTop: theme.spacing(2),
-    color: theme.palette.secondary.main,
-  },
-}));
+import { Grid, Typography } from '@material-ui/core';
+import { SectionHeader } from 'components/molecules';
+import { CardBase } from 'components/organisms';
+import { Image } from 'components/atoms';
 
 const Advantages = props => {
   const { data, className, ...rest } = props;
-  const classes = useStyles();
 
   const theme = useTheme();
   const isLg = useMediaQuery(theme.breakpoints.up('lg'), {
@@ -28,13 +20,13 @@ const Advantages = props => {
       <SectionHeader
         title={
           <span>
-            TheFront is a Website Kit Platform that Helps you to{' '}
+            Nice Car Wash hjälper dig att få fina & rena bilar{' '}
             <Typography color="secondary" variant="inherit" component="span">
-              Build the Right Website for you Customers
+              Om du har tid ... har vi glansen!
             </Typography>
           </span>
         }
-        subtitle="At TheFront, we go to great lengths to provide you with the best, highest-quality components. In fact, we’re so confident about our kit, we even back our leads with a 95% accuracy guarantee."
+        subtitle="bra service till rimliga priser"
         fadeUp
       />
       <Grid container spacing={isLg ? 10 : 2}>
@@ -50,23 +42,7 @@ const Advantages = props => {
             data-aos="fade-up"
           >
             <CardBase liftUp variant="outlined">
-              <DescriptionListIcon
-                title={item.title}
-                subtitle={item.description}
-                icon={
-                  <IconAlternate
-                    fontIconClass={item.icon}
-                    size="medium"
-                    color={colors.blue}
-                  />
-                }
-              />
-              <LearnMoreLink
-                title="Learn more"
-                variant="body1"
-                className={classes.learnMoreLink}
-                color="secondary"
-              />
+              <Image src={item.img} alt={item.title} />
             </CardBase>
           </Grid>
         ))}

@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { ToggleOn, ToggleOff } from '@material-ui/icons/';
 import { subPages } from './components/listItems';
-import { Chart, Deposits, Orders, Services } from './components';
+import { Deposits, Services } from './components';
 
 export default function Dashboard() {
   let pageId = parse(window.location.search).pid || 'users';

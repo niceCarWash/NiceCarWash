@@ -15,14 +15,12 @@ import {
   IndexView,
   Register as RegisterView,
   NotFound as NotFoundView,
-  RegisterComplete as ResgisterCompleteView,
   Login as LoginView,
   Account as AccountView,
   PasswordRest as PasswordRestView,
   Prices as pricesView,
   About as aboutView,
   Contact as contactView,
-  Admin as adminView,
   AdminDashboard,
 } from './views';
 

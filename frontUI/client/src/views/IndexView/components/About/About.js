@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
-
-const useStyles = makeStyles(theme => ({
-  promoLogo: {
-    maxWidth: 100,
-  },
-}));
+import DashboardImage from '../../../data/photo_2021-03-10_01-56-52.jpg';
 
 const About = props => {
   const { data, className, ...rest } = props;
-  const classes = useStyles();
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
@@ -30,62 +24,37 @@ const About = props => {
               <SectionHeader
                 title={
                   <span>
-                    Guaranted{' '}
-                    <Typography component="span" variant="inherit" color="primary">
-                      Company Growth
+                    få en hög kvalitet{' '}
+                    <Typography
+                      component="span"
+                      variant="inherit"
+                      color="primary"
+                    >
+                      biltvätt
                     </Typography>{' '}
-                    with Targeted Leads
+                    med Nice Car Wash
                   </span>
                 }
-                subtitle="We will help you to understand your leads and you will increase your company growth by converting the qualified leads into sales."
+                subtitle="Vi hjälper dig att rengöra, reparera och underhålla din bil."
                 ctaGroup={[
                   <Button
                     variant="contained"
                     color="primary"
                     size={isMd ? 'large' : 'medium'}
                   >
-                    Start a Free Trial
+                    beställ vår tjänst nu!
                   </Button>,
                   <Button
                     variant="outlined"
                     color="primary"
                     size={isMd ? 'large' : 'medium'}
                   >
-                    Learn more
+                    Läs mer
                   </Button>,
                 ]}
                 align={isMd ? 'left' : 'center'}
                 disableGutter
               />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography
-                variant="h6"
-                color="primary"
-                align={isMd ? 'left' : 'center'}
-                gutterBottom
-              >
-                TRUSTED BY:
-              </Typography>
-              <Grid container justify="space-between">
-                {data.map((partner, index) => (
-                  <Grid
-                    item
-                    container
-                    justify="center"
-                    xs={6}
-                    sm={2}
-                    key={index}
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={partner.name}
-                      className={classes.promoLogo}
-                      lazy={false}
-                    />
-                  </Grid>
-                ))}
-              </Grid>
             </Grid>
           </Grid>
         </Grid>
@@ -97,10 +66,7 @@ const About = props => {
           md={6}
           data-aos={'fade-up'}
         >
-          <Image
-            src="https://assets.maccarianagency.com/the-front/illustrations/dashboard-extended.svg"
-            alt="Dashboard"
-          />
+          <Image src={DashboardImage} alt="Dashboard" />
         </Grid>
       </Grid>
     </div>

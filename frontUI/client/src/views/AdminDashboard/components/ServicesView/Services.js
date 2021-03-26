@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useStyles } from './Style';
 import { loadUsers } from '../../../../redux/actions/user_actions/loadUsersAction';
 import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableRow,
   TableHead,
   Box,
@@ -15,11 +13,9 @@ import {
 import Title from '../Title';
 import { LocalSearch } from 'components/forms';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 const Services = props => {
   const { className, ...rest } = props;
-  const classes = useStyles();
   const [users, setUsers] = useState([]);
 
   // Users Search Step 1
@@ -34,7 +30,7 @@ const Services = props => {
   };
   useEffect(() => {
     userLoad();
-  }, []);
+  });
 
   const searched = keyword => user => user.name.toLowerCase().includes(keyword);
   return (

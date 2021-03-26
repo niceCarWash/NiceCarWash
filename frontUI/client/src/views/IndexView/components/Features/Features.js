@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
-import { Grid, Button, Typography, colors } from '@material-ui/core';
+import { Grid, Button, colors } from '@material-ui/core';
 import { LearnMoreLink } from 'components/atoms';
 import { SectionHeader, IconAlternate } from 'components/molecules';
 import { CardBase, DescriptionListIcon } from 'components/organisms';
@@ -25,20 +25,14 @@ const Features = props => {
   return (
     <div className={className} data-aos="fade-up" {...rest}>
       <SectionHeader
-        title={
-          <span>
-            A Website Builder Tool that{' '}
-            <Typography color="secondary" variant="inherit" component="span">Works for You</Typography>
-          </span>
-        }
-        subtitle="Companies from across the globe have had fantastic experiences using TheFront."
+        title={<span>Våra huvudsakliga tjänster </span>}
         ctaGroup={[
           <Button
             variant="outlined"
             size={isMd ? 'large' : 'medium'}
             color="secondary"
           >
-            See all integrations
+            Se alla tjänster
           </Button>,
         ]}
         fadeUp

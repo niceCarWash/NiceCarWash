@@ -1,6 +1,6 @@
 export const pricings = [
   {
-    title: 'Standard License',
+    title: 'GRUND PAKET',
     subtitle: 'A pay-once license, just for you',
     monthly: 49,
     annual: 480,
@@ -16,7 +16,7 @@ export const pricings = [
     isHighlighted: false,
   },
   {
-    title: 'Extended License',
+    title: 'SILVER PAKET',
     subtitle: 'A pay-once license, just for you',
     monthly: 79,
     annual: 780,
@@ -32,7 +32,7 @@ export const pricings = [
     isHighlighted: true,
   },
   {
-    title: 'Standard License +',
+    title: 'GULD PAKET',
     subtitle: 'A pay-once license, just for you',
     monthly: 69,
     annual: 680,

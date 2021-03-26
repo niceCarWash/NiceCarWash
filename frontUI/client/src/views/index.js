@@ -8,5 +8,4 @@ export { default as Account } from './Account';
 export { default as Prices } from './Pricing';
 export { default as About } from './AboutSideCover';
 export { default as Contact } from './ContactPageCover';
-export { default as Admin } from './Admin';
 export { default as AdminDashboard } from './AdminDashboard';

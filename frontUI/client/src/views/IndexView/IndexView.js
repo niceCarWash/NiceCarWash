@@ -9,24 +9,9 @@ import {
 } from '@material-ui/core';
 import ForumIcon from '@material-ui/icons/Forum';
 import { Section, ContactForm } from 'components/organisms';
-import {
-  About,
-  Advantages,
-  Features,
-  Integrations,
-  Reviews,
-  Team,
-  VideoSection,
-} from './components';
+import { About, Advantages, Features, Reviews } from './components';
 
-import {
-  partners,
-  advantages,
-  reviews,
-  integrations,
-  customizations,
-  team,
-} from './data';
+import { partners, advantages, reviews, customizations } from './data';
 
 const IndexView = () => {
   const classes = useStyles();
@@ -49,10 +34,6 @@ const IndexView = () => {
           <Section>
             <Divider />
           </Section>
-          <VideoSection />
-          <Section>
-            <Divider />
-          </Section>
           <Advantages data={advantages} />
           <Section>
             <Divider />
@@ -61,15 +42,7 @@ const IndexView = () => {
           <Section>
             <Divider />
           </Section>
-          <Integrations data={integrations} />
-          <Section>
-            <Divider />
-          </Section>
           <Features data={customizations} />
-          <Section>
-            <Divider />
-          </Section>
-          <Team data={team} />
         </>
       </Section>
       <Divider />

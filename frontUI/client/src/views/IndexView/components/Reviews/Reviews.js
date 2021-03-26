@@ -22,7 +22,7 @@ const Reviews = props => {
     defaultMatches: true,
   });
 
-  return (
+  return (  
     <div className={className} data-aos="fade-up" {...rest}>
       <SectionHeader
         overline={
@@ -35,11 +35,10 @@ const Reviews = props => {
         }
         title={
           <span>
-            <Typography color="secondary" variant="inherit" component="span">Rated 5 out of 5</Typography> stars by
-            our customers!
+            <Typography color="secondary" variant="inherit" component="span">Betygsatt 5 av 5 stjärnor </Typography> av våra kunder!
           </span>
         }
-        subtitle="Companies from across the globe have had fantastic experiences using TheFront. Here’s what they have to say."
+        subtitle="kunder från hela Sverige har haft fantastiska upplevelser med NiceCarWash. Här är vad de har att säga."
         fadeUp
       />
       <Grid container spacing={isMd ? 4 : 2}>

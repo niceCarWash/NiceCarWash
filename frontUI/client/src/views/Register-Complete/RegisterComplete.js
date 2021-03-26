@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { authFirbase } from '../../Firebase';
@@ -8,8 +8,7 @@ import { Section } from 'components/organisms';
 import { createOrUpdateUser } from '../../redux/actions/auth_actions/AuthAction';
 import Validations from './Validations';
 // Materil UI imports
-import { Button, TextField, Grid, Typography } from '@material-ui/core/';
-import Alert from '@material-ui/lab/Alert';
+import { Button, TextField, Grid } from '@material-ui/core/';
 import { useHistory } from 'react-router-dom';
 
 const RegisterComplete = () => {
@@ -18,7 +17,6 @@ const RegisterComplete = () => {
   let dispatch = useDispatch();
 
   const [Loading, setLoading] = useState(false);
-  const [ErrorMessage, setErrorMessage] = useState();
 
   const roleBasedRedirect = res => {
     if (res.data.role === 'admin') {
@@ -65,13 +63,11 @@ const RegisterComplete = () => {
             });
             console.log(err);
             setLoading(false);
-            setErrorMessage(err.message);
           });
       }
     } catch (error) {
       console.log(error);
       setLoading(false);
-      setErrorMessage(error.message);
     }
   };
 

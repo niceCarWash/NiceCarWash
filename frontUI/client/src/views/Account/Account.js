@@ -2,12 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import { parse } from 'query-string';
 import { useStyles } from './Style';
-import { authFirbase } from '../../Firebase';
-import { useDispatch, useSelector } from 'react-redux';
+// import { authFirbase } from '../../Firebase';
+// import {  useSelector } from 'react-redux';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
 import { Hero, General, Security, Notifications, Billing } from './components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const subPages = [
   {
@@ -35,9 +35,9 @@ const subPages = [
 const TabPanel = props => {
   const { children, value, index, ...other } = props;
 
-  // Load Auth From Redux Store
-  const { auth } = useSelector(state => ({ ...state }));
-  let user = !!auth;
+  // // Load Auth From Redux Store
+  // const { auth } = useSelector(state => ({ ...state }));
+  // let user = !!auth;
 
   return (
     <Box component="div" hidden={value !== index} {...other}>

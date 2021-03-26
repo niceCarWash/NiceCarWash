@@ -5,6 +5,7 @@ import { authFirbase } from '../../../../Firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from './Style';
 import { Link, useHistory } from 'react-router-dom';
+import Logo from '../../../../assets/images/Logo.png';
 import {
   Toolbar,
   Hidden,
@@ -14,9 +15,7 @@ import {
   Popover,
   Typography,
   IconButton,
-  Button,
 } from '@material-ui/core';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Image, DarkModeToggler } from 'components/atoms';
@@ -178,18 +177,14 @@ const Topbar = ({
     <Toolbar disableGutters className={classes.toolbar} {...rest}>
       {/* Here is the Logo Part  */}
       <div className={classes.logoContainer}>
-        <a href="/" title="thefront">
+        <Link to="/" title="Nice Car Wash">
           <Image
             className={classes.logoImage}
-            src={
-              themeMode === 'light'
-                ? 'https://assets.maccarianagency.com/the-front/logos/logo.svg'
-                : 'https://assets.maccarianagency.com/the-front/logos/logo-negative.svg'
-            }
-            alt="thefront"
+            src={themeMode === 'light' ? Logo : Logo}
+            alt="Nice Car Wash"
             lazy={false}
           />
-        </a>
+        </Link>
       </div>
       {/* End of Logo Part */}
 
@@ -250,20 +245,6 @@ const Topbar = ({
               themeMode={themeMode}
               onClick={() => themeToggler()}
             />
-          </ListItem>
-          <ListItem
-            className={clsx(classes.listItem, 'menu-item--no-dropdown')}
-          >
-            <Button variant="outlined" component="a" href="/documentation">
-              History
-            </Button>
-          </ListItem>
-          <ListItem
-            className={clsx(classes.listItem, 'menu-item--no-dropdown')}
-          >
-            <ShoppingCartIcon className={classes.listItemButton}>
-              Cart
-            </ShoppingCartIcon>
           </ListItem>
         </List>
       </Hidden>

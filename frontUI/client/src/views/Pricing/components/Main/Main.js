@@ -84,67 +84,73 @@ const Main = props => {
       <div className={classes.sectionContainer}>
         <Section narrow className={classes.pagePaddingTop}>
           <>
-          <SectionHeader
-            title="Pricing"
-            subtitle="We are founded by a leading academic and researcher in the field of Industrial Systems Engineering. "
-            titleProps={{
-              className: clsx(classes.textWhite, classes.fontWeightBold),
-              variant: 'h2',
-            }}
-            subtitleProps={{
-              className: classes.textWhite,
-            }}
-            data-aos="fade-up"
-          />
-          <div className={classes.toggleContainer} data-aos="fade-up">
-            <ToggleButtonGroup
-              value={pricingOption}
-              exclusive
-              onChange={handleClick}
-              className={classes.toggleButtonGroup}
-            >
-              <ToggleButton
-                value="annual"
-                className={clsx(
-                  classes.toggleButton,
-                  pricingOption === 'annual' ? classes.toggleButtonActive : {},
-                )}
+            <SectionHeader
+              title="Our Plans"
+              subtitle="Våra planer är billiga och mycket lönsamma"
+              titleProps={{
+                className: clsx(classes.textWhite, classes.fontWeightBold),
+                variant: 'h2',
+              }}
+              subtitleProps={{
+                className: classes.textWhite,
+              }}
+              data-aos="fade-up"
+            />
+            <div className={classes.toggleContainer} data-aos="fade-up">
+              <ToggleButtonGroup
+                value={pricingOption}
+                exclusive
+                onChange={handleClick}
+                className={classes.toggleButtonGroup}
               >
-                <Typography
-                  variant="subtitle1"
+                <ToggleButton
+                  value="annual"
                   className={clsx(
-                    classes.fontWeightBold,
-                    classes.textWhite,
-                    classes.toggleTitle,
-                    pricingOption === 'annual' ? classes.toggleTitleActive : {},
-                  )}
-                >
-                  Annual
-                </Typography>
-              </ToggleButton>
-              <ToggleButton
-                value="monthly"
-                className={clsx(
-                  classes.toggleButton,
-                  pricingOption === 'monthly' ? classes.toggleButtonActive : {},
-                )}
-              >
-                <Typography
-                  variant="subtitle1"
-                  className={clsx(
-                    classes.fontWeightBold,
-                    classes.textWhite,
-                    classes.toggleTitle,
-                    pricingOption === 'monthly'
-                      ? classes.toggleTitleActive
+                    classes.toggleButton,
+                    pricingOption === 'annual'
+                      ? classes.toggleButtonActive
                       : {},
                   )}
                 >
-                  Monthly
-                </Typography>
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </div>
+                  <Typography
+                    variant="subtitle1"
+                    className={clsx(
+                      classes.fontWeightBold,
+                      classes.textWhite,
+                      classes.toggleTitle,
+                      pricingOption === 'annual'
+                        ? classes.toggleTitleActive
+                        : {},
+                    )}
+                  >
+                    Annual
+                  </Typography>
+                </ToggleButton>
+                <ToggleButton
+                  value="monthly"
+                  className={clsx(
+                    classes.toggleButton,
+                    pricingOption === 'monthly'
+                      ? classes.toggleButtonActive
+                      : {},
+                  )}
+                >
+                  <Typography
+                    variant="subtitle1"
+                    className={clsx(
+                      classes.fontWeightBold,
+                      classes.textWhite,
+                      classes.toggleTitle,
+                      pricingOption === 'monthly'
+                        ? classes.toggleTitleActive
+                        : {},
+                    )}
+                  >
+                    Monthly
+                  </Typography>
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </div>
           </>
         </Section>
       </div>

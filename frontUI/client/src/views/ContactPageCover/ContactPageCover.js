@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Cover from '../data/photo_2021-03-10_01-56-31 (2).jpg';
 import {
   useMediaQuery,
   Grid,
@@ -86,7 +87,7 @@ const ContactPageCover = () => {
         <div className={classes.wrapper}>
           <div className={classes.cover}>
             <Image
-              src="https://assets.maccarianagency.com/the-front/photos/account/cover-4.jpg"
+              src={Cover}
               alt="Contact"
               className={classes.image}
               lazyProps={{ width: '100%' }}
@@ -102,10 +103,7 @@ const ContactPageCover = () => {
             <div>
               <Grid container spacing={isMd ? 4 : 2}>
                 <Grid item xs={12} data-aos="fade-up">
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                  >
+                  <Typography variant="subtitle1" color="textPrimary">
                     Full name
                   </Typography>
                   <TextField
@@ -118,10 +116,7 @@ const ContactPageCover = () => {
                   />
                 </Grid>
                 <Grid item xs={12} data-aos="fade-up">
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                  >
+                  <Typography variant="subtitle1" color="textPrimary">
                     E-mail
                   </Typography>
                   <TextField
@@ -134,10 +129,7 @@ const ContactPageCover = () => {
                   />
                 </Grid>
                 <Grid item xs={12} data-aos="fade-up">
-                  <Typography
-                    variant="subtitle1"
-                    color="textPrimary"
-                  >
+                  <Typography variant="subtitle1" color="textPrimary">
                     Message
                   </Typography>
                   <TextField

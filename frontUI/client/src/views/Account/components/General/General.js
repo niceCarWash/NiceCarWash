@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { authFirbase } from '../../../../Firebase';
@@ -31,8 +31,6 @@ const General = props => {
   const { auth } = useSelector(state => ({ ...state }));
   let user = auth;
 
-  const [Loading, setLoading] = useState(false);
-
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
@@ -59,13 +57,11 @@ const General = props => {
 
   const formik = useFormik({
     initialValues: {
-      email: window.localStorage.getItem('emailForRegistration'),
       fullName: user.name,
       email: user.email,
     },
     validationSchema: Validations,
     onSubmit: async values => {
-      setLoading(true);
       // await registerCompleteHandle(values);
     },
   });
