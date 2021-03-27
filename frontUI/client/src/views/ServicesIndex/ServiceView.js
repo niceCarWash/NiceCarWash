@@ -16,15 +16,15 @@ import { partners, advantages, reviews, customizations } from './data';
 const IndexView = () => {
   const classes = useStyles();
 
-  const [openBottombar, setOpenBottombar] = React.useState(false);
+  // const [openBottombar, setOpenBottombar] = React.useState(false);
 
-  const handleBottombarOpen = () => {
-    setOpenBottombar(true);
-  };
+  // const handleBottombarOpen = () => {
+  //   setOpenBottombar(true);
+  // };
 
-  const handleBottombarClose = () => {
-    setOpenBottombar(false);
-  };
+  // const handleBottombarClose = () => {
+  //   setOpenBottombar(false);
+  // };
 
   return (
     <div className={classes.root}>
@@ -54,7 +54,7 @@ const IndexView = () => {
           >
             <ForumIcon className={classes.forumIcon} />
           </IconButton>
-          <Drawer
+          {/* <Drawer
             anchor="bottom"
             open={openBottombar}
             onClose={handleBottombarClose}
@@ -62,7 +62,7 @@ const IndexView = () => {
             <div className={classes.contactForm}>
               <ContactForm />
             </div>
-          </Drawer>
+          </Drawer> */}
         </Toolbar>
       </AppBar>
     </div>
