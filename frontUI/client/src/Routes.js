@@ -29,7 +29,7 @@ const Routes = () => {
     <Switch>
       <Route
         exact
-        path="/home"
+        path="/"
         render={matchProps => (
           <WithLayout
             {...matchProps}
