@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 
   app.get('*', (req, res) => {
     res.sendFile(
-      path.resolve(__dir, 'frontUI', 'client', 'build', 'index.html')
+      path.resolve(__dirname, 'frontUI', 'client', 'build', 'index.html')
     );
   });
 }
