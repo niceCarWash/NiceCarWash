@@ -47,14 +47,14 @@ const IndexView = () => {
       </Section>
       <Divider />
       <AppBar position="fixed" className={classes.appBarBottom}>
-        <Toolbar disableGutters className={classes.toolbarBottom}>
-          <IconButton
+        {/* <Toolbar disableGutters className={classes.toolbarBottom}> */}
+        {/* <IconButton
             className={classes.chatIconButton}
             onClick={handleBottombarOpen}
           >
             <ForumIcon className={classes.forumIcon} />
-          </IconButton>
-          {/* <Drawer
+          </IconButton> */}
+        {/* <Drawer
             anchor="bottom"
             open={openBottombar}
             onClose={handleBottombarClose}
@@ -63,7 +63,7 @@ const IndexView = () => {
               <ContactForm />
             </div>
           </Drawer> */}
-        </Toolbar>
+        {/* </Toolbar> */}
       </AppBar>
     </div>
   );
