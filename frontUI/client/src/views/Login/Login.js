@@ -12,10 +12,7 @@ import { useStyles } from './Style';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import Validations from './Validations';
-import {
-  createOrUpdateUser,
-  currentUser,
-} from '../../redux/actions/auth_actions/AuthAction';
+import { createOrUpdateUser } from '../../redux/actions/auth_actions/AuthAction';
 // Materil UI imports
 import { Button, TextField, Grid, Box } from '@material-ui/core/';
 import LockOpenIcon from '@material-ui/icons/LockOpen';

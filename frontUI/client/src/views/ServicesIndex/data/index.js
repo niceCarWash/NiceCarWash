@@ -3,33 +3,6 @@ import Image2 from '../../data/photo_2021-03-10_01-56-52 (2).jpg';
 import Image3 from '../../data/photo_2021-03-10_02-02-04.jpg';
 import Image4 from '../../data/photo_2021-03-10_01-56-33 (2).jpg';
 
-export const partners = [
-  {
-    name: 'Airbnb',
-    logo: 'https://assets.maccarianagency.com/the-front/logos/airbnb.svg',
-  },
-  {
-    name: 'Coinbase',
-    logo: 'https://assets.maccarianagency.com/the-front/logos/coinbase.svg',
-  },
-  {
-    name: 'Dribbble',
-    logo: 'https://assets.maccarianagency.com/the-front/logos/dribbble.svg',
-  },
-  {
-    name: 'Instagram',
-    logo: 'https://assets.maccarianagency.com/the-front/logos/instagram.svg',
-  },
-  {
-    name: 'Netflix',
-    logo: 'https://assets.maccarianagency.com/the-front/logos/netflix.svg',
-  },
-  {
-    name: 'Pinterest',
-    logo: 'https://assets.maccarianagency.com/the-front/logos/pinterest.svg',
-  },
-];
-
 export const advantages = [
   {
     title: 'Build Recurring Revenue',
@@ -85,46 +58,6 @@ export const reviews = [
     authorOccupation: 'Head of Operations, Parkfield Commerce',
     feedback:
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  },
-];
-
-export const integrations = [
-  {
-    logo: 'https://assets.maccarianagency.com/the-front/logos/slack.svg',
-    name: 'Slack',
-    title:
-      "Sync your team's work and activity to share automatically in a channel with a simple plugin.",
-  },
-  {
-    logo: 'https://assets.maccarianagency.com/the-front/logos/mailchimp.svg',
-    name: 'Mailchimp',
-    title:
-      'Communicate important messages to your users through TheFront using Mailchimp as the delivery service.',
-  },
-  {
-    logo: 'https://assets.maccarianagency.com/the-front/logos/dropbox.svg',
-    name: 'Dropbox',
-    title:
-      'Sync any file store to Dropbox for automated sharing with people outside the company.',
-  },
-  {
-    logo: 'https://assets.maccarianagency.com/the-front/logos/google-drive.svg',
-    name: 'Google Drive',
-    title:
-      'Sync any file store to Google Drive for automated sharing with people outside the company.',
-  },
-  {
-    logo:
-      'https://assets.maccarianagency.com/the-front/logos/google-ad-manager.svg',
-    name: 'Google Ad Manager',
-    title:
-      'Easily manage and edit any Adwords campaign inline to improve ROI with constant review.',
-  },
-  {
-    logo: 'https://assets.maccarianagency.com/the-front/logos/atlassian.svg',
-    name: 'Atlassian',
-    title:
-      'Keep your entire team in sync with development and easily manage tasks, goals, and deadlines.',
   },
 ];
 
