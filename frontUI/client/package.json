@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "NODE_ENV=production GENERATE_SOURCEMAP=false react-scripts build",
     "prettier": "prettier --write '**/*.{js,css,html}'",
     "clear-all": "rimraf ./build ./node_modules"
   },
