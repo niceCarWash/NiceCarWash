@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix frontUI/client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontUI/client && npm build --prefix frontUI/client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontUI/client && npm run-script build --prefix frontUI/client"
   },
   "keywords": [],
   "author": "",
