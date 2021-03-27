@@ -12,7 +12,7 @@ import WithLayout from 'WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 
 import {
-  IndexView,
+  Services as ServicesView,
   Register as RegisterView,
   NotFound as NotFoundView,
   Login as LoginView,
@@ -33,7 +33,7 @@ const Routes = () => {
         render={matchProps => (
           <WithLayout
             {...matchProps}
-            component={IndexView}
+            component={ServicesView}
             layout={MainLayout}
           />
         )}

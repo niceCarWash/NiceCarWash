@@ -1,4 +1,4 @@
-export { default as IndexView } from './IndexView';
+export { default as Services } from './ServicesIndex';
 export { default as Register } from './Register';
 export { default as RegisterComplete } from './Register-Complete';
 export { default as Login } from './Login';
