@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import ForumIcon from '@material-ui/icons/Forum';
 import { Section, ContactForm } from 'components/organisms';
-import { About, Advantages, Features, Reviews } from './components';
+import { Advantages, Features, Reviews } from './components';
 
 import { advantages, reviews, customizations } from './data';
 
@@ -30,7 +30,7 @@ const IndexView = () => {
     <div className={classes.root}>
       <Section className={classes.pagePaddingTop}>
         <>
-          <About />
+          {/* <About /> */}
           <Section>
             <Divider />
           </Section>
