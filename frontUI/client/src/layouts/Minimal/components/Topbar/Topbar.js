@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Toolbar } from '@material-ui/core';
 import { Image } from 'components/atoms';
-
+import Logo from '../../../../assets/images/Logo.png';
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
   toolbar: {
     maxWidth: theme.layout.contentWidth,
@@ -34,16 +35,18 @@ const Topbar = ({ themeMode, className, ...rest }) => {
 
   return (
     <Toolbar className={clsx(classes.toolbar, className)} {...rest}>
+      {/* Here is the Logo Part  */}
       <div className={classes.logoContainer}>
-        <a href="/" title="thefront">
+        <Link to="/" title="Nice Car Wash">
           <Image
             className={classes.logoImage}
-            src={themeMode === 'light' ? 'https://assets.maccarianagency.com/the-front/logos/logo.svg' : 'https://assets.maccarianagency.com/the-front/logos/logo-negative.svg'}
-            alt="thefront"
+            src={themeMode === 'light' ? Logo : Logo}
+            alt="Nice Car Wash"
             lazy={false}
           />
-        </a>
+        </Link>
       </div>
+      {/* End of Logo Part */}
     </Toolbar>
   );
 };

@@ -34,7 +34,7 @@ const Routes = () => {
           <WithLayout
             {...matchProps}
             component={ServicesView}
-            layout={MainLayout}
+            layout={MinimalLayout}
           />
         )}
       />
@@ -45,7 +45,7 @@ const Routes = () => {
           <WithLayout
             {...matchProps}
             component={RegisterView}
-            layout={MainLayout}
+            layout={MinimalLayout}
           />
         )}
       />
@@ -56,7 +56,7 @@ const Routes = () => {
           <WithLayout
             {...matchProps}
             component={AccountView}
-            layout={MainLayout}
+            layout={MinimalLayout}
           />
         )}
       />
@@ -67,7 +67,7 @@ const Routes = () => {
           <WithLayout
             {...matchProps}
             component={LoginView}
-            layout={MainLayout}
+            layout={MinimalLayout}
           />
         )}
       />

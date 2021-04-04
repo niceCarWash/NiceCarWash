@@ -16,7 +16,7 @@ const app = express();
 
 // middlewares
 app.use(morgan('dev'));
-app.use(bodyParser.json({ limit: '100mb' }));
+app.use(bodyParser.json({ limit: '2mb' }));
 app.use(cors());
 
 // routes middleware
