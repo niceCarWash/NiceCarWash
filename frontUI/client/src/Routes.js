@@ -34,7 +34,7 @@ const Routes = () => {
           <WithLayout
             {...matchProps}
             component={ServicesView}
-            layout={MinimalLayout}
+            layout={MainLayout}
           />
         )}
       />
