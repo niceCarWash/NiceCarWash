@@ -3,6 +3,7 @@ import { authFirbase } from '../../../../Firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import Logo from '../../../../assets/images/Logo.png';
 import { useStyles } from './Style';
 import {
   Typography,
@@ -142,11 +143,11 @@ const Footer = props => {
             <List disablePadding>
               <ListItem disableGutters className={classes.logoContainerItem}>
                 <div className={classes.logoContainer}>
-                  <a href="/" title="thefront">
+                  <a href="/" title="Nice Car Wash">
                     <Image
                       className={classes.logoImage}
-                      src="https://assets.maccarianagency.com/the-front/logos/logo-negative.svg"
-                      alt="thefront"
+                      src={Logo}
+                      alt="Nice Car Wash"
                       lazy={false}
                     />
                   </a>

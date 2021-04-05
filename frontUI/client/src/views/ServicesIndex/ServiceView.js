@@ -37,32 +37,6 @@ const IndexView = () => {
   return (
     <div className={classes.root}>
       <Section className={classes.pagePaddingTop}>
-        <Grid container justify="space-between" spacing={isMd ? 4 : 0}>
-          <Grid item xs={12} md={6} data-aos={'fade-up'}>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs={12}>
-                <SectionHeader
-                  title={
-                    <span style={{ alignContent: 'center' }}>
-                      Webbplatsen är under uppbyggnad. Tack för ditt besök. den
-                      kommer igång snart.{' '}
-                      <Typography
-                        component="span"
-                        variant="inherit"
-                        color="primary"
-                      >
-                        Håll dig uppdaterad!
-                      </Typography>{' '}
-                    </span>
-                  }
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Section>
-          <Divider />
-        </Section>
         <About />
         <Section>
           <Divider />

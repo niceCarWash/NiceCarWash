@@ -1,14 +1,14 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 // Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: 'AIzaSyBsSU3PM_zX4XdorRlqMeHKS5hXqpO3aBg',
-  authDomain: 'myecommerce-e7daa.firebaseapp.com',
-  projectId: 'myecommerce-e7daa',
-  storageBucket: 'myecommerce-e7daa.appspot.com',
-  messagingSenderId: '275526958360',
-  appId: '1:275526958360:web:30b3ae9e4ef4ff56a6f26d',
-  measurementId: 'G-0NXTB0TC6T',
+const firebaseConfig = {
+  apiKey: 'AIzaSyCOLlh5It6dPmagmPDsouXUnoRIeFPJh1U',
+  authDomain: 'nice-car-wash.firebaseapp.com',
+  projectId: 'nice-car-wash',
+  storageBucket: 'nice-car-wash.appspot.com',
+  messagingSenderId: '1008985706171',
+  appId: '1:1008985706171:web:3006e4e76ebacdb6c8e39e',
+  measurementId: 'G-LYDYTBMKF6',
 };
 
 // Initialize Firebase
