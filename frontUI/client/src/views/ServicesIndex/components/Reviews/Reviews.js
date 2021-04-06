@@ -22,7 +22,7 @@ const Reviews = props => {
     defaultMatches: true,
   });
 
-  return (  
+  return (
     <div className={className} data-aos="fade-up" {...rest}>
       <SectionHeader
         overline={
@@ -35,7 +35,10 @@ const Reviews = props => {
         }
         title={
           <span>
-            <Typography color="secondary" variant="inherit" component="span">Betygsatt 5 av 5 stjärnor </Typography> av våra kunder!
+            <Typography color="secondary" variant="inherit" component="span">
+              Betygsatt 5 av 5 stjärnor{' '}
+            </Typography>{' '}
+            av våra kunder!
           </span>
         }
         subtitle="kunder från hela Sverige har haft fantastiska upplevelser med NiceCarWash. Här är vad de har att säga."
@@ -75,7 +78,7 @@ const Reviews = props => {
             size={isMd ? 'large' : 'medium'}
             color="secondary"
           >
-            See all reviews
+            Se alla recensioner
           </Button>
         </Grid>
       </Grid>

@@ -3,9 +3,9 @@ import { useStyles } from './Style';
 import { Divider } from '@material-ui/core';
 
 import { Section } from 'components/organisms';
-import { About, Advantages, Reviews } from './components';
+import { About, Reviews, Features } from './components';
 
-import { advantages, reviews } from './data';
+import { reviews, customizations } from './data';
 const IndexView = () => {
   const classes = useStyles();
 
@@ -16,7 +16,8 @@ const IndexView = () => {
         <Section>
           <Divider />
         </Section>
-        <Advantages data={advantages} />
+        <Features data={customizations} />
+        {/* <Advantages data={advantages} /> */}
         <Section>
           <Divider />
         </Section>
@@ -24,6 +25,10 @@ const IndexView = () => {
         <Section>
           <Divider />
         </Section>
+        {/* <Features data={customizations} />
+        <Section>
+          <Divider />
+        </Section> */}
       </Section>
       <Divider />
     </div>
