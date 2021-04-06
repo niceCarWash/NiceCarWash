@@ -1,11 +1,5 @@
-var admin = require('firebase-admin');
+var admin = require('../firebase/');
 const User = require('../models/user');
-var serviceAccount = require('../config/fbServiceAccountKey.json');
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
-defaultAuth = admin.auth();
 
 exports.authCheck = async (req, res, next) => {
   let auth = req.headers.authorization;

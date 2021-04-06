@@ -6,23 +6,15 @@ import {
   IconButton,
   Divider,
   Drawer,
-  Grid,
-  Typography,
 } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { useMediaQuery } from '@material-ui/core';
+
 import ForumIcon from '@material-ui/icons/Forum';
 import { Section, ContactForm } from 'components/organisms';
-import { About, Advantages, Features, Reviews } from './components';
+import { About, Advantages, Reviews } from './components';
 
-import { advantages, reviews, customizations } from './data';
-import { SectionHeader } from 'components/molecules';
+import { advantages, reviews } from './data';
 const IndexView = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  });
 
   const [openBottombar, setOpenBottombar] = React.useState(false);
 
@@ -49,10 +41,9 @@ const IndexView = () => {
         <Section>
           <Divider />
         </Section>
-        <Features data={customizations} />
       </Section>
       <Divider />
-      {/* <AppBar position="fixed" className={classes.appBarBottom}>
+      <AppBar position="fixed" className={classes.appBarBottom}>
         <Toolbar disableGutters className={classes.toolbarBottom}>
           <IconButton
             className={classes.chatIconButton}
@@ -70,7 +61,7 @@ const IndexView = () => {
             </div>
           </Drawer>
         </Toolbar>
-      </AppBar> */}
+      </AppBar>
     </div>
   );
 };
