@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    // "client-install": "npm install --prefix frontUI/client",
+    
     "start": "node server.js",
     "server": "nodemon server.js",
-    // "client": "npm start --prefix frontUI/client",
-    // "dev": "concurrently \"npm run server\" \"npm run client\"",
-    // "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontUI/client && npm run build --prefix frontUI/client"
+    
   },
   "keywords": [],
   "author": "",
