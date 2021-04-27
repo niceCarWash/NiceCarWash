@@ -39,3 +39,21 @@ exports.deleteUser = async (req, res) => {
     res.status(400).send('User delete failed');
   }
 };
+
+exports.createOrUpdateUserProfile = async (req, res) => {
+  const { fullName, country, city, address, phone, birthdate } = req.body.e;
+  const { email, picture } = req.user;
+  try {
+    const user = await User.findOneAndUpdate(
+      { email },
+      { name: fullName, picture, country, city, address, phone, birthdate },
+      { new: true }
+    );
+    if (user) {
+      console.log('USER PROFILE UPDATED', user);
+      res.json(user);
+    }
+  } catch (error) {
+    res.json(error);
+  }
+};

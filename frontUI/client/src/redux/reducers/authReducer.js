@@ -12,6 +12,8 @@ export const authReducer = (state = null, { type, payload, loading }) => {
 
     case 'AUTH_SUCCESS':
       return payload;
+    case 'USER_PROFILE_UPDATE':
+      return payload;
     default:
       return state;
   }

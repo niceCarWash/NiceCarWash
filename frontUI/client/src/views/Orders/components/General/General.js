@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { authFirbase } from 'Firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import clsx from 'clsx';
-import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 import Validations from './Validations';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
@@ -13,36 +12,14 @@ import {
   TextField,
   Button,
   Divider,
-  Select,
   MenuItem,
 } from '@material-ui/core';
+import { orderRequest } from 'redux/actions/user_actions/orderRequest';
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
     fontWeight: 700,
     marginBottom: theme.spacing(1),
-  },
-  toggleContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: theme.spacing(0, 2),
-  },
-  toggleButtonGroup: {
-    background: 'transparent',
-  },
-  toggleButton: {
-    background: 'transparent',
-    border: '1px solid white',
-    padding: theme.spacing(1, 5),
-  },
-  toggleButtonActive: {
-    backgroundColor: 'white !important',
-  },
-  toggleTitle: {
-    textTransform: 'capitalize',
-  },
-  toggleTitleActive: {
-    color: theme.palette.primary.main,
   },
 }));
 
@@ -51,95 +28,53 @@ const General = props => {
   const { className, ...rest } = props;
   const classes = useStyles();
 
-  const [planOrService, setPlanOrService] = React.useState('plan');
-  const handleClick = (event, newOptoin) => {
-    setPlanOrService(newOptoin);
-  };
+  // Loading State
+  const [loading, setLoading] = useState(false);
   //Load Store
   const { auth, plans, servicesList } = useSelector(state => ({ ...state }));
-  let user = auth;
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
 
-  // Handle Booking
-  const handleBooking = values => {
-    console.log(values);
-  };
+  const user = authFirbase.currentUser;
 
+  // Handle Booking
+  const handleBooking = async e => {
+    setLoading(false);
+    try {
+      orderRequest(auth.token, e, auth._id).then();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const formik = useFormik({
     initialValues: {
-      fullName: null,
-      email: null,
+      fullName: '',
+      email: '',
       service: '',
       plan: '',
+      country: '',
+      city: '',
+      address: '',
     },
     validationSchema: Validations,
     onSubmit: async values => {
+      setLoading(true);
       await handleBooking(values);
     },
   });
 
   return (
     <div className={className} {...rest}>
-      <form onSubmit={formik.handleSubmit}>
+      <form className={classes.form} onSubmit={formik.handleSubmit}>
         <Grid container spacing={isMd ? 4 : 2}>
           <Grid item lg={6}>
             <Typography variant="h6" color="textPrimary">
               Order Information
             </Typography>
           </Grid>
-          <div className={classes.toggleContainer} data-aos="fade-up">
-            <ToggleButtonGroup
-              value={planOrService}
-              exclusive
-              onChange={handleClick}
-              className={classes.toggleButtonGroup}
-            >
-              <ToggleButton
-                value="plan"
-                className={clsx(
-                  classes.toggleButton,
-                  planOrService === 'plan' ? classes.toggleButtonActive : {},
-                )}
-              >
-                <Typography
-                  variant="h5"
-                  className={clsx(
-                    classes.fontWeightBold,
-                    classes.textWhite,
-                    classes.toggleTitle,
-                    planOrService === 'plan' ? classes.toggleTitleActive : {},
-                  )}
-                >
-                  Plan
-                </Typography>
-              </ToggleButton>
-              <ToggleButton
-                value="Service"
-                className={clsx(
-                  classes.toggleButton,
-                  planOrService === 'Service' ? classes.toggleButtonActive : {},
-                )}
-              >
-                <Typography
-                  variant="h5"
-                  className={clsx(
-                    classes.fontWeightBold,
-                    classes.textWhite,
-                    classes.toggleTitle,
-                    planOrService === 'Service'
-                      ? classes.toggleTitleActive
-                      : {},
-                  )}
-                >
-                  Service
-                </Typography>
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </div>
 
           <Grid item xs={12}>
             <Divider />
@@ -190,54 +125,63 @@ const General = props => {
           <Grid item xs={12}>
             <Divider />
           </Grid>
-          {planOrService === 'Service' && (
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                className={classes.inputTitle}
-              >
-                Select Service
-              </Typography>
 
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                onChange={formik.handleChange}
-                fullWidth
-              >
-                {servicesList.data.map(res => (
-                  <MenuItem key={res._id} value={formik.values.service}>
-                    {res.service}
-                  </MenuItem>
-                ))}
-              </Select>
-            </Grid>
-          )}
-          {planOrService === 'plan' && (
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                className={classes.inputTitle}
-              >
-                Select Plan
-              </Typography>
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              className={classes.inputTitle}
+            >
+              Select Service
+            </Typography>
+            <TextField
+              style={{ width: '200px' }}
+              className="px-2 my-2"
+              variant="outlined"
+              name="service"
+              id="service"
+              select
+              onChange={formik.handleChange}
+              value={formik.values.service}
+              error={formik.touched.service && Boolean(formik.errors.service)}
+              helperText={formik.touched.service && formik.errors.service}
+            >
+              {servicesList.data.map(res => (
+                <MenuItem key={res._id} value={res._id}>
+                  {res.service}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
 
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                onChange={formik.handleChange}
-                fullWidth
-              >
-                {plans.data.map(res => (
-                  <MenuItem key={res._id} value={formik.values.plan}>
-                    {res.planTitle}
-                  </MenuItem>
-                ))}
-              </Select>
-            </Grid>
-          )}
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              className={classes.inputTitle}
+            >
+              Select Plan
+            </Typography>
+
+            <TextField
+              style={{ width: '200px' }}
+              className="px-2 my-2"
+              variant="outlined"
+              name="plan"
+              id="plan"
+              select
+              onChange={formik.handleChange}
+              value={formik.values.plan}
+              error={formik.touched.plan && Boolean(formik.errors.plan)}
+              helperText={formik.touched.plan && formik.errors.plan}
+            >
+              {plans.data.map(res => (
+                <MenuItem key={res._id} value={res._id}>
+                  {res.planTitle}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
 
           <Grid item xs={12}>
             <Divider />
@@ -256,6 +200,10 @@ const General = props => {
               variant="outlined"
               size="medium"
               name="country"
+              value={formik.values.country}
+              onChange={formik.handleChange}
+              error={formik.touched.country && Boolean(formik.errors.country)}
+              helperText={formik.touched.country && formik.errors.country}
               fullWidth
               type="text"
             />
@@ -273,6 +221,10 @@ const General = props => {
               variant="outlined"
               size="medium"
               name="city"
+              value={formik.values.city}
+              onChange={formik.handleChange}
+              error={formik.touched.city && Boolean(formik.errors.city)}
+              helperText={formik.touched.city && formik.errors.city}
               fullWidth
               type="text"
             />
@@ -290,6 +242,10 @@ const General = props => {
               variant="outlined"
               size="medium"
               name="address"
+              value={formik.values.address}
+              onChange={formik.handleChange}
+              error={formik.touched.address && Boolean(formik.errors.address)}
+              helperText={formik.touched.address && formik.errors.address}
               fullWidth
               type="text"
             />
@@ -300,6 +256,7 @@ const General = props => {
               type="submit"
               color="primary"
               size="large"
+              disabled={loading}
             >
               Book Now
             </Button>

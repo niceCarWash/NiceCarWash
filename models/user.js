@@ -13,18 +13,29 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'subscriber',
     },
-    cart: {
-      type: Array,
-      default: [],
+
+    country: {
+      type: String,
+      default: '',
     },
-    info: [
-      { country: String },
-      { city: String },
-      { phone: String },
-      { birthdate: Date },
-      { gender: { type: String, enum: ['Male', 'Female'] } },
-    ],
-    //   wishlist: [{ type: ObjectId, ref: "Product" }],
+    city: {
+      type: String,
+      default: '',
+    },
+    address: {
+      type: String,
+      default: '',
+    },
+    phone: {
+      type: String,
+      default: '',
+    },
+    birthdate: {
+      type: String,
+      default: '',
+    },
+
+    gender: { type: String, enum: ['Male', 'Female'] },
   },
   { timestamps: true }
 );

@@ -6,7 +6,7 @@ import { useStyles } from './Style';
 // import {  useSelector } from 'react-redux';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
-import { Hero, General, Security, Notifications, Billing } from './components';
+import { Hero, General, Orders } from './components';
 import { Link } from 'react-router-dom';
 
 const subPages = [
@@ -16,19 +16,9 @@ const subPages = [
     title: 'General',
   },
   {
-    id: 'security',
-    href: '/account/?pid=security',
-    title: 'Security',
-  },
-  {
-    id: 'notifications',
-    href: '/account/?pid=notifications',
-    title: 'Notifications',
-  },
-  {
-    id: 'billing',
-    href: '/account/?pid=billing',
-    title: 'Billing Information',
+    id: 'order',
+    href: '/account/?pid=order',
+    title: 'Orders',
   },
 ];
 
@@ -87,14 +77,8 @@ const Account = (props = {}) => {
               <TabPanel value={pageId} index={'general'}>
                 <General />
               </TabPanel>
-              <TabPanel value={pageId} index={'security'}>
-                <Security />
-              </TabPanel>
-              <TabPanel value={pageId} index={'notifications'}>
-                <Notifications />
-              </TabPanel>
-              <TabPanel value={pageId} index={'billing'}>
-                <Billing />
+              <TabPanel value={pageId} index={'order'}>
+                <Orders />
               </TabPanel>
             </CardBase>
           </Grid>

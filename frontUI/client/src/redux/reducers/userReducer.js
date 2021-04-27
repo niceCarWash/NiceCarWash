@@ -20,6 +20,10 @@ export const userReducer = (state = inittialState, action) => {
       return action.loading;
     case 'LOGIN_START':
       return action.loading;
+    case 'ORDER_LIST':
+      return action.payload;
+    case 'USER_PROFILE_UPDATE':
+      return action.payload;
     default:
       return state;
   }

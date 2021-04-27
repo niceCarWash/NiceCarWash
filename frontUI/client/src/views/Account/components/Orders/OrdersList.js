@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { authFirbase } from '../../../../Firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { orderList } from 'redux/actions/user_actions/orderLIst';
 import { useHistory } from 'react-router-dom';
 import {
   useMediaQuery,
@@ -14,7 +15,7 @@ import {
   Button,
   Divider,
 } from '@material-ui/core';
-
+import Alert from '@material-ui/lab/Alert';
 const useStyles = makeStyles(theme => ({
   inputTitle: {
     fontWeight: 700,
@@ -30,19 +31,41 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Security = props => {
-  let dispatch = useDispatch();
-  let history = useHistory();
-  const firebaseLogOut = () => {
-    localStorage.removeItem('persist:root');
-    authFirbase.signOut();
-    dispatch({
-      type: 'CLEAN_UP',
-      payload: null,
-      loading: false,
-    });
-    history.push('/');
-  };
+const Orders = props => {
+  // let dispatch = useDispatch();
+  // let history = useHistory();
+
+  // const { auth } = useSelector(state => ({ ...state }));
+  // const [warning, setWarning] = useState();
+  // //Orders Load
+  // const loadOrders = () => {
+  //   orderList(auth.token, auth._id)
+  //     .then(orders => {
+  //       dispatch({
+  //         type: 'ORDER_LIST',
+  //         payload: orders,
+  //       });
+  //     })
+  //     .catch(error => {
+  //       setWarning(error.message);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   loadOrders();
+  // }, []);
+
+  // // Logout
+  // const firebaseLogOut = () => {
+  //   localStorage.removeItem('persist:root');
+  //   authFirbase.signOut();
+  //   dispatch({
+  //     type: 'CLEAN_UP',
+  //     payload: null,
+  //     loading: false,
+  //   });
+  //   history.push('/');
+  // };
   const { className, ...rest } = props;
   const classes = useStyles();
 
@@ -54,7 +77,7 @@ const Security = props => {
   return (
     <div className={className} {...rest}>
       <Grid container spacing={isMd ? 4 : 2}>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <div className={classes.titleCta}>
             <Typography variant="h6" color="textPrimary">
               Change Password
@@ -68,6 +91,9 @@ const Security = props => {
           <Divider />
         </Grid>
         <Grid item xs={12}>
+          {warning && <Alert severity="error">{warning}</Alert>} */}
+        {/* </Grid> */}
+        <Grid item xs={12}>
           <Typography
             variant="subtitle1"
             color="textPrimary"
@@ -75,16 +101,8 @@ const Security = props => {
           >
             Current password
           </Typography>
-          <TextField
-            placeholder="Old password"
-            variant="outlined"
-            size="medium"
-            name="fullname"
-            fullWidth
-            type="password"
-          />
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Typography
             variant="subtitle1"
             color="textPrimary"
@@ -163,17 +181,17 @@ const Security = props => {
           >
             save
           </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );
 };
 
-Security.propTypes = {
+Orders.propTypes = {
   /**
    * External classes
    */
   className: PropTypes.string,
 };
 
-export default Security;
+export default Orders;

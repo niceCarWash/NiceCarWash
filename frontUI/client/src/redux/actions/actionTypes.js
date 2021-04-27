@@ -12,3 +12,9 @@ export const PLANS_LIST = 'PLANS_LIST';
 
 //Services
 export const SERVICE_LIST = 'SERVICE_LIST';
+
+//Orders
+export const ORDER_LIST = 'ORDER_LIST';
+
+//Profile
+export const USER_PROFILE_UPDATE = 'USER_PROFILE_UPDATE';

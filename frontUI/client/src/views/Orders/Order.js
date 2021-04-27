@@ -46,7 +46,7 @@ const TabPanel = props => {
   );
 };
 
-const Account = (props = {}) => {
+const Order = (props = {}) => {
   const classes = useStyles();
   let pageId = parse(window.location.search).pid || 'general';
 
@@ -69,4 +69,4 @@ const Account = (props = {}) => {
   );
 };
 
-export default Account;
+export default Order;

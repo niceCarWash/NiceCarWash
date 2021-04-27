@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
     "start": "node server.js",
     "server": "nodemon server.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -29,6 +27,8 @@
     "material-ui-chip-input": "^2.0.0-beta.2",
     "mongoose": "^5.11.15",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.5.0",
+    "nodemailer-mailgun-transport": "^2.0.3",
     "nodemon": "^2.0.7",
     "react-datepicker": "^3.6.0",
     "yup": "^0.32.9"

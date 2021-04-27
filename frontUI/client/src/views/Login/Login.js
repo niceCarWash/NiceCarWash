@@ -53,6 +53,11 @@ const Login = () => {
               token: authtoken.authtoken,
               role: res.data.role,
               _id: res.data._id,
+              country: res.data.country,
+              city: res.data.city,
+              address: res.data.address,
+              phone: res.data.phone,
+              birthdate: res.data.birthdate,
             },
           });
 
@@ -89,6 +94,11 @@ const Login = () => {
                 token: idTokenResult.token,
                 role: res.data.role,
                 _id: res.data._id,
+                country: res.data.country,
+                city: res.data.city,
+                address: res.data.address,
+                phone: res.data.phone,
+                birthdate: res.data.birthdate,
               },
             });
             roleBasedRedirect(res);
@@ -118,6 +128,11 @@ const Login = () => {
                 token: idTokenResult.token,
                 role: res.data.role,
                 _id: res.data._id,
+                country: res.data.country,
+                city: res.data.city,
+                address: res.data.address,
+                phone: res.data.phone,
+                birthdate: res.data.birthdate,
               },
             });
             roleBasedRedirect(res);
