@@ -181,7 +181,7 @@ const General = props => {
           </Grid>
           <Grid item xs={12}>
             {warning && <Alert severity="error">{warning}</Alert>}
-            {success && <Alert severity="error">{success}</Alert>}
+            {success && <Alert severity="success">{success}</Alert>}
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography

@@ -6,6 +6,7 @@ const cors = require('cors');
 const { readdirSync } = require('fs');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const {erroHandler} = require("./middlewares/error-handler")
 // const path = require('path');
 //Load Condig
 dotenv.config({ path: './config/config.env' });
@@ -16,8 +17,9 @@ const app = express();
 
 // middlewares
 app.use(morgan('dev'));
-app.use(bodyParser.json({ limit: '2mb' }));
+app.use(express.json())
 app.use(cors());
+app.use(erroHandler)
 
 // routes middleware
 readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)));

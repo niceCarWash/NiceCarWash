@@ -154,10 +154,7 @@ const Footer = props => {
                 </div>
               </ListItem>
               <ListItem disableGutters>
-                <IconButton className={classes.socialIcon}>
-                  <FacebookIcon className={classes.icon} />
-                </IconButton>
-                <IconButton className={classes.socialIcon}>
+                <IconButton className={classes.socialIcon} href="https://www.instagram.com/nice.carwash/">
                   <InstagramIcon className={classes.icon} />
                 </IconButton>
               </ListItem>

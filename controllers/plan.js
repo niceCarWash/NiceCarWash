@@ -10,19 +10,35 @@ exports.create = async (req, res) => {
     }).save();
     res.send(newPlan);
   } catch (err) {
-    console.log(err);
-    res.status(400).send('Create Plan failed');
+    const newError = new Error(err)
+    newError.status = 400
+    next(newError)
   }
 };
 
 exports.list = async (req, res) => {
-  total = await Plan.countDocuments();
-  res.header('content-range', `Plan 0-10}/${total}`);
-  res.json(await Plan.find({}).sort({ createdAt: -1 }).exec());
+  try {
+    total = await Plan.countDocuments();
+    res.header('content-range', `Plan 0-10}/${total}`);
+    res.json(await Plan.find({}).sort({ createdAt: -1 }).exec());
+    
+  } catch (error) {
+    const newError = new Error(error)
+    newError.status = 400
+    next(newError)
+  }
+ 
 };
 exports.read = async (req, res) => {
-  let plan = await Plan.findOne({ _id: req.params.id }).exec();
+  try {
+    let plan = await Plan.findOne({ _id: req.params.id }).exec();
   res.json(plan);
+  } catch (error) {
+    const newError = new Error(error)
+    newError.status = 400
+    next(newError)
+  }
+  
 };
 
 exports.update = async (req, res) => {
@@ -36,7 +52,9 @@ exports.update = async (req, res) => {
     );
     res.json({ data: updated });
   } catch (err) {
-    res.status(400).send('Plan update failed');
+    const newError = new Error(err)
+    newError.status = 400
+    next(newError)
   }
 };
 
@@ -48,6 +66,8 @@ exports.remove = async (req, res) => {
     console.log(deleted);
     res.send(deleted);
   } catch (err) {
-    res.status(400).send('Plan delete failed');
+    const newError = new Error(err)
+    newError.status = 400
+    next(newError)
   }
 };

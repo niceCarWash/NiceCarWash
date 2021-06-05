@@ -99,7 +99,7 @@ const Orders = props => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Current password
+            we're working on this feature!
           </Typography>
         </Grid>
         {/* <Grid item xs={12}>

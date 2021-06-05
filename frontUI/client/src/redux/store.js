@@ -2,7 +2,7 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import { persistStore } from 'redux-persist';
 
 import thunk from 'redux-thunk';
-import persistedReducer from './reducers/index';
+import persistedReducer from './reducers/';
 
 const store = createStore(
   persistedReducer,

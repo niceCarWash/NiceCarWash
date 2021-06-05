@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 const Main = props => {
   const { data, className, ...rest } = props;
   const { plans } = useSelector(state => ({ ...state }));
+  console.log(plans)
   const classes = useStyles();
 
   const theme = useTheme();
@@ -55,9 +56,11 @@ const Main = props => {
                         {plan.planPrice} KR
                       </Typography>
                     }
-                    features={plan.planFeatures.map(feature => (
-                      <Typography>{feature.planFeatures}</Typography>
-                    ))}
+                    features={
+                      plan.planFeatures.map(feature => (
+                        <Typography>{feature}</Typography>
+                      ))
+                    }
                     featureCheckComponent={
                       <Icon
                         fontIconClass="far fa-check-circle"

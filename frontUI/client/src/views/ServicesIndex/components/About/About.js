@@ -6,6 +6,7 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import DashboardImage from '../../../data/photo_2021-03-10_01-56-52.jpg';
+import {Link} from 'react-router-dom'
 
 const About = props => {
   const { data, className, ...rest } = props;
@@ -41,15 +42,11 @@ const About = props => {
                     variant="contained"
                     color="primary"
                     size={isMd ? 'large' : 'medium'}
+                    component={Link}
+                    to="/plans"
+
                   >
                     beställ vår tjänst nu!
-                  </Button>,
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    size={isMd ? 'large' : 'medium'}
-                  >
-                    Läs mer
                   </Button>,
                 ]}
                 align={isMd ? 'left' : 'center'}

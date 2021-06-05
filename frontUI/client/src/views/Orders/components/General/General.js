@@ -4,7 +4,9 @@ import { authFirbase } from 'Firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import Validations from './Validations';
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Section } from 'components/organisms';
 import {
   useMediaQuery,
   Grid,
@@ -15,6 +17,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 import { orderRequest } from 'redux/actions/user_actions/orderRequest';
+import {useHistory} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
@@ -27,7 +30,9 @@ const General = props => {
   let dispatch = useDispatch();
   const { className, ...rest } = props;
   const classes = useStyles();
-
+  const [Message, setMessage] = useState();
+  const history = useHistory()
+  const [ErrorMessage, setErrorMessage] = useState();
   // Loading State
   const [loading, setLoading] = useState(false);
   //Load Store
@@ -44,9 +49,18 @@ const General = props => {
   const handleBooking = async e => {
     setLoading(false);
     try {
-      orderRequest(auth.token, e, auth._id).then();
+      orderRequest(auth.token, e, auth._id)
+        .then(res => {
+          setMessage('Order made Successfuly, we will contact you soon!')
+          history.push("/")
+        })
+        .catch(err => {
+          console.log(err.message);
+          setErrorMessage(err.message)
+        });
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.message)
     }
   };
   const formik = useFormik({
@@ -58,6 +72,7 @@ const General = props => {
       country: '',
       city: '',
       address: '',
+      phone: '',
     },
     validationSchema: Validations,
     onSubmit: async values => {
@@ -78,6 +93,16 @@ const General = props => {
 
           <Grid item xs={12}>
             <Divider />
+            {Message && (
+              <Section className={classes.section}>
+                <Alert severity="success">{Message}</Alert>
+              </Section>
+            )}
+            {ErrorMessage && (
+              <Section className={classes.section}>
+                <Alert severity="error">{ErrorMessage}</Alert>
+              </Section>
+            )}
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography
@@ -225,6 +250,27 @@ const General = props => {
               onChange={formik.handleChange}
               error={formik.touched.city && Boolean(formik.errors.city)}
               helperText={formik.touched.city && formik.errors.city}
+              fullWidth
+              type="text"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              className={classes.inputTitle}
+            >
+              Phone
+            </Typography>
+            <TextField
+              placeholder="Phone"
+              variant="outlined"
+              size="medium"
+              name="phone"
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              error={formik.touched.phone && Boolean(formik.errors.phone)}
+              helperText={formik.touched.phone && formik.errors.phone}
               fullWidth
               type="text"
             />

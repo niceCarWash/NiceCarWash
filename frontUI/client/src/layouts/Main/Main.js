@@ -37,16 +37,12 @@ const Main = ({ children, themeToggler, themeMode }) => {
     },
 
     aboutUs: {
-      title: 'About us',
+      title: 'Contact Us',
       id: 'aboutUs',
       children: {
         aboutUsRoutes: {
-          groupTitle: 'About Us',
+          groupTitle: 'Contact',
           pages: [
-            {
-              title: 'Who We Are',
-              href: '/about/',
-            },
             {
               title: 'Contact Us ',
               href: '/contact',
