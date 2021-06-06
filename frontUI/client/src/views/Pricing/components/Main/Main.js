@@ -57,9 +57,12 @@ const Main = props => {
                       </Typography>
                     }
                     features={
-                      plan.planFeatures.map(feature => (
-                        <Typography>{feature}</Typography>
-                      ))
+                      plan.planFeatures.map(feature => {
+                        const arrayFeature = [feature]
+                        return (
+                          <Typography>{arrayFeature}</Typography>
+                        )
+                      })
                     }
                     featureCheckComponent={
                       <Icon
@@ -80,7 +83,9 @@ const Main = props => {
                     }
                     className={classes.cardPricing}
                   />
+                  
                 </Grid>
+                
               ))}
             </Grid>
           </Section>
@@ -98,7 +103,7 @@ Main.propTypes = {
   /**
    * data to be rendered
    */
-  data: PropTypes.array.isRequired,
+
 };
 
 export default Main;

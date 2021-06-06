@@ -12,7 +12,6 @@ import {
   List,
   ListItem,
 } from '@material-ui/core';
-import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import { Link, useHistory } from 'react-router-dom';
 import { Image } from 'components/atoms';

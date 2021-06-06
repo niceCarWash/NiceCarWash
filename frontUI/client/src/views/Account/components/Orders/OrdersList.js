@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { authFirbase } from '../../../../Firebase';
-import { useDispatch, useSelector } from 'react-redux';
-import { orderList } from 'redux/actions/user_actions/orderLIst';
-import { useHistory } from 'react-router-dom';
+// import { authFirbase } from '../../../../Firebase';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { orderList } from 'redux/actions/user_actions/orderLIst';
+// import { useHistory } from 'react-router-dom';
 import {
   useMediaQuery,
   Grid,
   Typography,
-  TextField,
-  FormControlLabel,
-  Switch,
-  Button,
-  Divider,
 } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+// import Alert from '@material-ui/lab/Alert';
 const useStyles = makeStyles(theme => ({
   inputTitle: {
     fontWeight: 700,

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { useStyles } from './Style';
 import Cover from '../data/photo_2021-03-10_01-56-31 (2).jpg';
-import { useDispatch, useSelector } from 'react-redux';
-import { authFirbase } from 'Firebase';
+import {  useSelector } from 'react-redux';
 import Alert from '@material-ui/lab/Alert';
 import Validations from './Validations';
 import {contact} from 'redux/actions/user_actions/contactAction'
@@ -23,14 +22,13 @@ import { Section } from 'components/organisms';
 
 const ContactPageCover = () => {
   const classes = useStyles();
-  let dispatch = useDispatch();
   const [Message, setMessage] = useState();
   const [ErrorMessage, setErrorMessage] = useState();
   // Loading State
   const [loading, setLoading] = useState(false);
   //Load Store
-  const { auth, plans, servicesList } = useSelector(state => ({ ...state }));
-  const user = authFirbase.currentUser;
+  const { auth, } = useSelector(state => ({ ...state }));
+
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {

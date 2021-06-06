@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { authFirbase } from 'Firebase';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import Validations from './Validations';
 import Alert from '@material-ui/lab/Alert';
@@ -27,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const General = props => {
-  let dispatch = useDispatch();
   const { className, ...rest } = props;
   const classes = useStyles();
   const [Message, setMessage] = useState();
@@ -43,7 +41,6 @@ const General = props => {
     defaultMatches: true,
   });
 
-  const user = authFirbase.currentUser;
 
   // Handle Booking
   const handleBooking = async e => {

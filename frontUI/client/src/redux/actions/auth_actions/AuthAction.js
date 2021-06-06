@@ -5,7 +5,6 @@ const createOrUpdateUser = async authtoken => {
     'Content-Type': 'application/json',
     Authorization: authtoken.token,
   };
-  const data = {};
   return await axios.post(
     `${process.env.REACT_APP_API}/create-user/`,
     {},

@@ -20,7 +20,8 @@ exports.list = async (req, res) => {
   try {
     total = await Plan.countDocuments();
     res.header('content-range', `Plan 0-10}/${total}`);
-    res.json(await Plan.find({}).sort({ createdAt: -1 }).exec());
+    const plans = await Plan.find({}).sort({ createdAt: -1 }).exec()
+    res.json(plans)
     
   } catch (error) {
     const newError = new Error(error)

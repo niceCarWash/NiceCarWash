@@ -5,4 +5,5 @@ exports.erroHandler = (error, req, res, next) => {
              message: error.message
         }
     })
+    console.log("===============================================", error.message)
     }

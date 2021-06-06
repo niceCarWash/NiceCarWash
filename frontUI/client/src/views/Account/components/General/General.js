@@ -108,6 +108,7 @@ const General = props => {
           });
           toast.success('Profile Updated');
           setSuccess('Profile Updated');
+          history.push("/")
         })
         .catch(err => {
           toast.error(err.message);

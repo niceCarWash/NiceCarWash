@@ -6,7 +6,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import UserRoutes from './Routes/UserRoutes';
-import AdminRoutes from './Routes/AdminRoutes';
 import PublicRoutes from './Routes/PublicRoutes';
 import WithLayout from 'WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';

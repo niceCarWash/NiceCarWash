@@ -1,36 +1,14 @@
 import React from 'react';
-import clsx from 'clsx';
 import { parse } from 'query-string';
 import { useStyles } from './Style';
 // import { authFirbase } from '../../Firebase';
 // import {  useSelector } from 'react-redux';
-import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
 import { Hero, General } from './components';
-import { Link } from 'react-router-dom';
 
-const subPages = [
-  {
-    id: 'general',
-    href: '/account/?pid=general',
-    title: 'General',
-  },
-  {
-    id: 'security',
-    href: '/account/?pid=security',
-    title: 'Security',
-  },
-  {
-    id: 'notifications',
-    href: '/account/?pid=notifications',
-    title: 'Notifications',
-  },
-  {
-    id: 'billing',
-    href: '/account/?pid=billing',
-    title: 'Billing Information',
-  },
-];
+
+
 
 const TabPanel = props => {
   const { children, value, index, ...other } = props;

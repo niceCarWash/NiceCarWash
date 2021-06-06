@@ -1,33 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { useMediaQuery } from '@material-ui/core';
-import { Grid, Button, Typography, colors, Divider } from '@material-ui/core';
+import { Grid, Button, Typography, colors} from '@material-ui/core';
 import { SectionHeader, IconAlternate } from 'components/molecules';
 import { CardBase, DescriptionListIcon } from 'components/organisms';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
-  learnMoreLink: {
-    marginTop: theme.spacing(2),
-  },
-  typography: {
-    fontSize: 10,
-  },
-}));
+
 
 const Features = props => {
   const { className, ...rest } = props;
 
-  const { servicesList, auth } = useSelector(state => ({ ...state }));
+  const { servicesList} = useSelector(state => ({ ...state }));
 
-  const classes = useStyles();
 
-  const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  });
+
 
   return (
     <div className={className} data-aos="fade-up" {...rest}>
