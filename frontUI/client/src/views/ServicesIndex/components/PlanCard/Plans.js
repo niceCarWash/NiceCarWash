@@ -24,7 +24,7 @@ const PlanCard = props => {
 
   return (
     <div className={className} {...rest}>
-      <SectionHeader title="Kombo-Paket" data-aos="fade-up" align="left" />
+      <SectionHeader title="All Plans" data-aos="fade-up" align="left" />
       <Grid container spacing={2}>
         <Grid
           item
@@ -81,9 +81,35 @@ const PlanCard = props => {
               </div> */}
 
               <div style={{ flexGrow: 1 }} />
-              <Button component={Link} to={`/plans/plan/${plan.slug}`}>
-                visa mer
-              </Button>
+              {auth && auth.role === 'admin' ? (
+                <div>
+                  <Grid container>
+                    <Grid item sm={6}>
+                      <Button
+                        variant="contained"
+                        component={Link}
+                        to={`/plans/plan/${plan.slug}`}
+                      >
+                        Edit
+                      </Button>
+                    </Grid>
+                    <Grid item sm={6}>
+                      <Button
+                        variant="outlined"
+                        style={{ color: 'red' }}
+                        component={Link}
+                        to={`/plans/plan/${plan.slug}`}
+                      >
+                        Delete
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </div>
+              ) : (
+                <Button component={Link} to={`/plans/plan/${plan.slug}`}>
+                  Learn more
+                </Button>
+              )}
             </CardContent>
           </Card>
         </Grid>

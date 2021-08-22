@@ -1,17 +1,44 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
 const servicesSchema = new mongoose.Schema(
   {
-    service: {
+    title: {
       type: String,
+      trim: true,
       required: true,
+      maxlength: 32,
+      text: true,
+    },
+    slug: {
+      type: String,
+      unique: true,
+      lowercase: true,
+      index: true,
+    },
+    image: {
+      type: String,
     },
     price: {
-      type: String,
+      type: Number,
       required: true,
     },
+    time: {
+      type: Number,
+    },
+    ratings: [
+      {
+        star: Number,
+        postedBy: { type: ObjectId, ref: "User" },
+      },
+    ],
+    review: [
+      {
+        text: String,
+        postedBy: { type: ObjectId, ref: "User" },
+      },
+    ],
   },
   { timestamps: true }
 );
-module.exports = mongoose.model('Services', servicesSchema);
+module.exports = mongoose.model("Services", servicesSchema);

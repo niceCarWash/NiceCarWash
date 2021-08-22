@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { authFirbase } from '../../../../Firebase';
+import { authFirbase } from 'Firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStyles } from './Style';
 import { Link, useHistory } from 'react-router-dom';

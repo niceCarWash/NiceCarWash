@@ -1,17 +1,23 @@
-const express = require('express');
-const bodyParser = require('body-parser').json();
+const express = require("express");
+const bodyParser = require("body-parser").json();
 const router = express.Router();
 
 // middlewares
-const { authCheck, adminCheck } = require('../middlewares/auth');
+const { authCheck, adminCheck } = require("../middlewares/auth");
 
 // controller
-const { create, list, update, remove, read } = require('../controllers/plan');
+const {
+  create,
+  listAll,
+  update,
+  remove,
+  read,
+} = require("../controllers/plan");
 
-router.post('/plans/create', authCheck, adminCheck, create);
-router.put('/plans/:id/update', authCheck, adminCheck, update);
-router.get('/plans', list);
-router.get('/plans/:id/show', read);
-router.delete('/plans/:id/delete', authCheck, adminCheck, remove);
+router.post("/plan", authCheck, adminCheck, create);
+router.put("/plan/:slug", authCheck, adminCheck, update);
+router.get("/plans", listAll);
+router.get("/plan/:slug", read);
+router.delete("/plan/:slug", authCheck, adminCheck, remove);
 
 module.exports = router;

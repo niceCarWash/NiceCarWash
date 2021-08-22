@@ -24,8 +24,14 @@ const About = React.lazy(() => import('./views/AboutSideCover'));
 const Contact = React.lazy(() => import('./views/ContactPageCover'));
 const OrderPage = React.lazy(() => import('./views/Orders'));
 const AdminPage = React.lazy(() => import('./views/Admin'));
-const SingleProduct = React.lazy(() =>
+const PlanDetails = React.lazy(() =>
   import('./views/ServicesIndex/components/Plan'),
+);
+const UpdateCategory = React.lazy(() =>
+  import('./views/Admin/components/SidebarPages/Categories/UpdateCategory'),
+);
+const UpdateFeature = React.lazy(() =>
+  import('views/Admin/components/SidebarPages/Features/UpdateFeature'),
 );
 const Routes = () => {
   return (
@@ -55,6 +61,28 @@ const Routes = () => {
             <WithLayout
               {...matchProps}
               component={AdminPage}
+              layout={MinimalLayout}
+            />
+          )}
+        />
+        <AdminRoutes
+          exact
+          path="/admin/categories/:slug"
+          render={matchProps => (
+            <WithLayout
+              {...matchProps}
+              component={UpdateCategory}
+              layout={MinimalLayout}
+            />
+          )}
+        />
+        <AdminRoutes
+          exact
+          path="/admin/features/:slug"
+          render={matchProps => (
+            <WithLayout
+              {...matchProps}
+              component={UpdateFeature}
               layout={MinimalLayout}
             />
           )}
@@ -99,24 +127,14 @@ const Routes = () => {
             />
           )}
         />
-        <Route
-          exact
-          path="plans/plan"
-          render={matchProps => (
-            <WithLayout
-              {...matchProps}
-              component={SingleProduct}
-              layout={MainLayout}
-            />
-          )}
-        />
+
         <Route
           exact
           path="/plans/plan/:slug"
           render={matchProps => (
             <WithLayout
               {...matchProps}
-              component={SingleProduct}
+              component={PlanDetails}
               layout={MainLayout}
             />
           )}

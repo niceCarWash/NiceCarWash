@@ -1,16 +1,31 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
 const orderSchema = new mongoose.Schema(
   {
-    orderPlan: { type: ObjectId, ref: 'Plan', required: true },
-    orderService: { type: ObjectId, ref: 'Services', required: true },
+    orders: [
+      {
+        plan: {
+          type: ObjectId,
+          ref: "Plan",
+        },
+        service: {
+          type: ObjectId,
+          ref: "Services",
+        },
+        count: Number,
+      },
+    ],
     orderUser: {
       type: ObjectId,
-      ref: 'User',
-      required: true,
+      ref: "User",
+    },
+    orderStatus: {
+      type: String,
+      default: "Not Processed",
+      enum: ["Not Processed", "processing", "Cancelled", "Completed"],
     },
   },
   { timestamps: true }
 );
-module.exports = mongoose.model('Order', orderSchema);
+module.exports = mongoose.model("Order", orderSchema);

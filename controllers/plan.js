@@ -1,74 +1,64 @@
-const Plan = require('../models/plans');
-
+const Plan = require("../models/plans");
+const slugify = require("slugify");
 exports.create = async (req, res) => {
   try {
-    const { planTitle, planFeatures, planPrice } = req.body;
-    const newPlan = await new Plan({
-      planTitle,
-      planPrice,
-      planFeatures,
-    }).save();
+    req.body.slug = slugify(req.body.title);
+    const newPlan = await new Plan(req.body).save();
     res.send(newPlan);
   } catch (err) {
-    const newError = new Error(err)
-    newError.status = 400
-    next(newError)
+    console.log(err);
+    res.status(400).json({
+      err: err.message,
+    });
   }
 };
 
-exports.list = async (req, res) => {
-  try {
-    total = await Plan.countDocuments();
-    res.header('content-range', `Plan 0-10}/${total}`);
-    const plans = await Plan.find({}).sort({ createdAt: -1 }).exec()
-    res.json(plans)
-    
-  } catch (error) {
-    const newError = new Error(error)
-    newError.status = 400
-    next(newError)
-  }
- 
+exports.listAll = async (req, res) => {
+  let plans = await Plan.find({})
+    .limit(parseInt(req.params.count))
+    .populate("category")
+    .populate("features")
+    .sort([["createdAt", "desc"]])
+    .exec();
+  res.json(plans);
 };
+
 exports.read = async (req, res) => {
-  try {
-    let plan = await Plan.findOne({ _id: req.params.id }).exec();
+  const plan = await Plan.findOne({ slug: req.params.slug })
+    .populate("category")
+    .populate("features")
+    .exec();
   res.json(plan);
-  } catch (error) {
-    const newError = new Error(error)
-    newError.status = 400
-    next(newError)
-  }
-  
-};
-
-exports.update = async (req, res) => {
-  const { planTitle, planFeatures, planPrice } = req.body;
-  const { id } = req.params;
-  try {
-    const updated = await Plan.findOneAndUpdate(
-      { _id: id },
-      { planTitle, planFeatures, planPrice, _id: id },
-      { upsert: true }
-    );
-    res.json({ data: updated });
-  } catch (err) {
-    const newError = new Error(err)
-    newError.status = 400
-    next(newError)
-  }
 };
 
 exports.remove = async (req, res) => {
   try {
-    const deleted = await Plan.findOneAndDelete({
-      _id: req.params.id,
-    });
-    console.log(deleted);
-    res.send(deleted);
+    const deleted = await Plan.findOneAndRemove({
+      slug: req.params.slug,
+    }).exec();
+    res.json(deleted);
   } catch (err) {
-    const newError = new Error(err)
-    newError.status = 400
-    next(newError)
+    console.log(err);
+    return res.staus(400).send("Plan delete failed");
+  }
+};
+
+exports.update = async (req, res) => {
+  try {
+    if (req.body.title) {
+      req.body.slug = slugify(req.body.title);
+    }
+    const updated = await Plan.findOneAndUpdate(
+      { slug: req.params.slug },
+      req.body,
+      { new: true }
+    ).exec();
+    res.json(updated);
+  } catch (err) {
+    console.log("PLAN UPDATE ERROR ----> ", err);
+    // return res.status(400).send("Product update failed");
+    res.status(400).json({
+      err: err.message,
+    });
   }
 };

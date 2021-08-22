@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useStyles } from './Style';
 import PropTypes from 'prop-types';
+import { authFirbase } from 'Firebase';
 import { useTheme } from '@material-ui/core/styles';
 import {
   Typography,
@@ -10,39 +11,32 @@ import {
   List,
   AppBar,
   Divider,
+  Box,
+  Menu,
+  MenuItem,
+  Button,
 } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { Box } from '@material-ui/core';
 import { parse } from 'query-string';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const AllPlans = props => {
-  return <Typography>This is all Plans</Typography>;
-};
-const CreatePlan = props => {
-  return <Typography>This is Create Plan</Typography>;
-};
-const AllCategories = props => {
-  return <Typography>This is all Categories</Typography>;
-};
-const CreateCategory = props => {
-  return <Typography>This is Create Category</Typography>;
-};
-const AllFeatures = props => {
-  return <Typography>This is all Features</Typography>;
-};
-const CreateFeature = props => {
-  return <Typography>This is Create Feature</Typography>;
-};
+import {
+  Plans,
+  CreatePlan,
+  Categories,
+  CreateCategory,
+  Features,
+  CreateFeature,
+} from '../SidebarPages';
 
 const Display = props => {
   const { children, value, index, ...other } = props;
@@ -73,6 +67,19 @@ const AdminSideBar = props => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  let dispatch = useDispatch();
+  let history = useHistory();
+  const firebaseLogOut = () => {
+    localStorage.removeItem('persist:root');
+    authFirbase.signOut();
+    dispatch({
+      type: 'CLEAN_UP',
+      payload: null,
+      loading: false,
+    });
+    history.push('/');
+  };
+
   let pageId = parse(window.location.search).pid || 'all_plans';
   return (
     <div className={classes.root}>
@@ -96,6 +103,15 @@ const AdminSideBar = props => {
           <Typography variant="h6" noWrap>
             Admin Panel
           </Typography>
+
+          <MenuItem component={Link} to="/">
+            <ArrowBackIcon />
+            &nbsp;Home
+          </MenuItem>
+          <Button style={{ color: 'white' }} onClick={firebaseLogOut}>
+            <ExitToAppIcon />
+            &nbsp; logout
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -174,19 +190,19 @@ const AdminSideBar = props => {
       >
         <div className={classes.drawerHeader} />
         <Display value={pageId} index={'all_plans'}>
-          <AllPlans />
+          <Plans />
         </Display>
         <Display value={pageId} index={'create_plan'}>
           <CreatePlan />
         </Display>
         <Display value={pageId} index={'all_categories'}>
-          <AllCategories />
+          <Categories />
         </Display>
         <Display value={pageId} index={'create_category'}>
           <CreateCategory />
         </Display>
         <Display value={pageId} index={'all_features'}>
-          <AllFeatures />
+          <Features />
         </Display>
         <Display value={pageId} index={'create_feature'}>
           <CreateFeature />

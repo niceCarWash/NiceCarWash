@@ -1,28 +1,29 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const { readdirSync } = require('fs');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const {erroHandler} = require("./middlewares/error-handler")
+const express = require("express");
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const { readdirSync } = require("fs");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const { erroHandler } = require("./middlewares/error-handler");
 // const path = require('path');
 //Load Condig
-dotenv.config({ path: './config/config.env' });
+dotenv.config({ path: "./config/config.env" });
 // DB Config
 connectDB();
 // app
 const app = express();
 
 // middlewares
-app.use(morgan('dev'));
-app.use(express.json())
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use(erroHandler)
+app.use(erroHandler);
 
 // routes middleware
-readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)));
+readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
 // // Serve Static assests if in production
 // if (process.env.NODE_ENV === 'production') {
